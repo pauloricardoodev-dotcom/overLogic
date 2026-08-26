@@ -1,0 +1,12 @@
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.hero-particles__canvas {
+  width: 100% !important;
+  height: 100% !important;
+}

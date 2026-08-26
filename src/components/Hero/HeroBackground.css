@@ -1,0 +1,250 @@
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Glows atmosféricos distribuídos pelo hero */
+.hero-bg__glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.hero-bg__glow--left {
+  top: 25%;
+  left: 5%;
+  width: 45%;
+  height: 55%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 40, 40, 0.1) 0%,
+    rgba(232, 0, 0, 0.04) 45%,
+    transparent 70%
+  );
+}
+
+.hero-bg__glow--center {
+  top: 40%;
+  left: 35%;
+  width: 35%;
+  height: 40%;
+  background: radial-gradient(
+    circle,
+    rgba(232, 0, 0, 0.03) 0%,
+    transparent 65%
+  );
+}
+
+.hero-bg__glow--right {
+  top: 15%;
+  right: 0%;
+  width: 50%;
+  height: 60%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 30, 30, 0.06) 0%,
+    rgba(232, 0, 0, 0.02) 50%,
+    transparent 75%
+  );
+}
+
+.hero-bg__glow--bottom {
+  bottom: -5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 35%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 30, 30, 0.06) 0%,
+    rgba(232, 0, 0, 0.02) 40%,
+    transparent 70%
+  );
+  filter: blur(60px);
+}
+
+/* Grade perspectiva sutil no chão */
+.hero-bg__grid {
+  position: absolute;
+  bottom: 0;
+  left: -10%;
+  right: -10%;
+  height: 45%;
+  background-image:
+    linear-gradient(rgba(232, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(232, 0, 0, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, transparent 80%);
+  transform: perspective(500px) rotateX(60deg);
+  transform-origin: bottom center;
+  opacity: 0.4;
+}
+
+.hero-bg__wireframe {
+  position: absolute;
+  opacity: 0.6;
+  animation: wireframeFloat 14s ease-in-out infinite;
+}
+
+.hero-bg__wireframe--1 {
+  width: 180px;
+  height: 180px;
+  top: 12%;
+  right: 6%;
+  animation-delay: 0s;
+}
+
+.hero-bg__wireframe--2 {
+  width: 140px;
+  height: 140px;
+  top: 58%;
+  right: 12%;
+  animation-delay: -4s;
+}
+
+.hero-bg__wireframe--3 {
+  width: 100px;
+  height: 100px;
+  top: 32%;
+  right: 22%;
+  animation-delay: -8s;
+}
+
+.hero-bg__wireframe--4 {
+  width: 120px;
+  height: 120px;
+  top: 20%;
+  left: 8%;
+  animation-delay: -6s;
+  opacity: 0.35;
+}
+
+.hero-bg__particles {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-bg__particle {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  background-color: var(--color-red);
+  opacity: var(--opacity);
+  box-shadow: 0 0 8px rgba(255, 40, 40, 0.5);
+  animation: particlePulse var(--duration) ease-in-out infinite;
+  animation-delay: var(--delay);
+}
+
+.hero-bg__lines {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-bg__line {
+  position: absolute;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(232, 0, 0, 0.07),
+    transparent
+  );
+  height: 1px;
+  animation: lineDrift 22s linear infinite;
+}
+
+.hero-bg__line--1 {
+  top: 20%;
+  left: 0;
+  width: 50%;
+  animation-delay: 0s;
+}
+
+.hero-bg__line--2 {
+  top: 45%;
+  right: 0;
+  width: 45%;
+  animation-delay: -5s;
+}
+
+.hero-bg__line--3 {
+  top: 70%;
+  left: 10%;
+  width: 40%;
+  animation-delay: -11s;
+}
+
+.hero-bg__line--4 {
+  top: 55%;
+  left: 30%;
+  width: 35%;
+  animation-delay: -17s;
+}
+
+@keyframes wireframeFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateY(-14px) rotate(2deg);
+    opacity: 0.7;
+  }
+}
+
+@keyframes particlePulse {
+  0%,
+  100% {
+    opacity: calc(var(--opacity) * 0.4);
+    transform: scale(1);
+  }
+  50% {
+    opacity: var(--opacity);
+    transform: scale(1.4);
+  }
+}
+
+@keyframes lineDrift {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-bg__wireframe--1 {
+    width: 120px;
+    height: 120px;
+    right: 3%;
+  }
+
+  .hero-bg__wireframe--2,
+  .hero-bg__wireframe--3 {
+    display: none;
+  }
+
+  .hero-bg__wireframe--4 {
+    width: 80px;
+    height: 80px;
+    left: 5%;
+  }
+
+  .hero-bg__glow--left {
+    width: 70%;
+    left: -10%;
+  }
+}
