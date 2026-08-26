@@ -173,7 +173,6 @@ function CubeScene() {
 
       <FloatingCube />
       <FloorGrid />
-      <EmittedLightGlow />
     </>
   )
 }
