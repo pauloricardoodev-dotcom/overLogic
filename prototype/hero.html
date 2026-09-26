@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>overLogic — Hero</title>
+<style>
+  :root{
+    --bg: #0a0808;
+    --bg2: #120a0a;
+    --red: #e6172c;
+    --red-deep: #7a0f16;
+    --red-glow: #ff2d3f;
+    --white: #f5f3f2;
+    --grey: #9c9694;
+    --line: rgba(230,23,44,0.35);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{
+    background: radial-gradient(ellipse at 30% 60%, #150707 0%, var(--bg) 55%, #000 100%);
+    color: var(--white);
+    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    width:100%;
+    overflow-x:hidden;
+  }
+
+  .hero{
+    position:relative;
+    min-height: 920px;
+    width:100%;
+    padding: 40px 64px 60px;
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+  }
+
+  /* background circuit lines */
+  .bg-lines{
+    position:absolute; inset:0;
+    pointer-events:none;
+    opacity:0.9;
+  }
+
+  /* NAV */
+  nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    position:relative;
+    z-index:5;
+  }
+  .logo{
+    font-size:24px;
+    font-weight:800;
+    letter-spacing:-0.5px;
+  }
+  .logo span.over{ color: var(--red); }
+  .logo span.logic{ color: var(--white); }
+
+  .nav-links{
+    display:flex;
+    gap:40px;
+    list-style:none;
+    font-size:15px;
+    color:#d8d4d2;
+  }
+  .nav-links li{ cursor:pointer; position:relative; padding-bottom:6px; }
+  .nav-links li.active{ color: var(--red); font-weight:500; }
+  .nav-links li.active::after{
+    content:"";
+    position:absolute;
+    left:0; right:0; bottom:0;
+    height:2px;
+    background: var(--red);
+  }
+
+  .cta-nav{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    color: var(--red);
+    border: 1px solid var(--red);
+    padding: 12px 22px;
+    border-radius: 6px;
+    font-size:14px;
+    font-weight:600;
+    background: rgba(230,23,44,0.06);
+    cursor:pointer;
+  }
+
+  /* MAIN CONTENT */
+  .content{
+    position:relative;
+    z-index:5;
+    flex:1;
+    display:grid;
+    grid-template-columns: 1.05fr 1fr;
+    align-items:center;
+    gap:40px;
+    margin-top:60px;
+  }
+
+  /* CUBE */
+  .cube-wrap{
+    position:relative;
+    height:600px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    perspective: 1400px;
+  }
+  .cube{
+    position:relative;
+    width:340px;
+    height:340px;
+    transform-style:preserve-3d;
+    transform: rotateX(-18deg) rotateY(35deg) translateY(0px);
+    transition: transform 0.15s ease-out;
+    will-change: transform;
+  }
+  .cube-wrap.idle .cube{
+    animation: floaty 6s ease-in-out infinite;
+    transition: transform 0.6s ease-out;
+  }
+  @keyframes floaty{
+    0%,100%{ transform: rotateX(-18deg) rotateY(35deg) translateY(0px); }
+    50%{ transform: rotateX(-18deg) rotateY(35deg) translateY(-18px); }
+  }
+  .face{
+    position:absolute;
+    width:340px;
+    height:340px;
+    border: 1.5px solid rgba(255,120,120,0.9);
+  }
+  .face.top{
+    background: linear-gradient(135deg, rgba(255,90,90,0.85), rgba(180,10,20,0.55));
+    transform: rotateX(90deg) translateZ(170px);
+    box-shadow: inset 0 0 60px rgba(255,80,90,0.5);
+  }
+  .face.front{
+    background: linear-gradient(160deg, rgba(200,20,30,0.9), rgba(60,3,6,0.85));
+    transform: translateZ(170px);
+    box-shadow: inset 0 0 90px rgba(255,40,50,0.35);
+  }
+  .face.right{
+    background: linear-gradient(200deg, rgba(120,8,14,0.95), rgba(20,1,2,0.95));
+    transform: rotateY(90deg) translateZ(170px);
+  }
+  .glow-floor{
+    position:absolute;
+    bottom:26px;
+    left:50%;
+    transform:translateX(-50%);
+    width:520px;
+    height:60px;
+    background: radial-gradient(ellipse at center, rgba(255,40,50,0.85) 0%, rgba(255,40,50,0.25) 40%, transparent 75%);
+    filter: blur(6px);
+  }
+
+  /* TEXT SIDE */
+  .text-side{ padding-right: 20px; }
+  .eyebrow{
+    color: var(--red);
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    letter-spacing: 3px;
+    margin-bottom: 22px;
+    font-weight:600;
+  }
+  h1{
+    font-size: 60px;
+    line-height: 1.08;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: var(--white);
+    margin-bottom: 26px;
+  }
+  h1 .accent{ color: var(--red); }
+
+  .desc{
+    color: var(--grey);
+    font-size: 17px;
+    line-height: 1.7;
+    max-width: 480px;
+    margin-bottom: 40px;
+  }
+
+  .btn-row{ display:flex; gap:18px; align-items:center; }
+  .btn{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding: 18px 28px;
+    border-radius: 8px;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+    border:none;
+  }
+  .btn-primary{
+    background: var(--red);
+    color: #fff;
+    box-shadow: 0 10px 30px -8px rgba(230,23,44,0.7);
+  }
+  .btn-secondary{
+    background: transparent;
+    color: var(--white);
+    border: 1px solid rgba(255,255,255,0.25);
+  }
+  .play-circle{
+    width:22px; height:22px;
+    border-radius:50%;
+    border: 1.5px solid var(--white);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:9px;
+  }
+
+  @media (max-width: 900px){
+    .hero{ padding: 24px 24px 40px; }
+    .nav-links{ display:none; }
+    .content{ grid-template-columns: 1fr; margin-top:30px; }
+    .cube-wrap{ height:340px; order:1; }
+    .cube{ width:220px; height:220px; }
+    .face{ width:220px; height:220px; }
+    .face.top{ transform: rotateX(90deg) translateZ(110px); }
+    .face.front{ transform: translateZ(110px); }
+    .face.right{ transform: rotateY(90deg) translateZ(110px); }
+    h1{ font-size: 38px; }
+    .text-side{ order:2; padding-right:0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <svg class="bg-lines" viewBox="0 0 1717 920" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <g stroke="var(--line)" stroke-width="1" fill="none">
+      <polyline points="0,150 90,150 90,320 40,320" />
+      <polyline points="1717,180 1600,180 1600,90 1500,90" />
+      <polyline points="1717,600 1620,600 1620,760 1717,760" />
+      <polyline points="1450,900 1450,780 1560,780 1560,650 1717,650" />
+      <polyline points="700,10 700,120 830,120" />
+      <polyline points="0,700 120,700 120,850" />
+    </g>
+    <g fill="var(--red)">
+      <circle cx="1590" cy="170" r="3.5" />
+      <circle cx="1717" cy="70" r="3.5" />
+      <circle cx="1660" cy="480" r="3" />
+      <circle cx="775" cy="590" r="3" />
+      <circle cx="103" cy="650" r="3" />
+      <circle cx="103" cy="450" r="3" />
+    </g>
+  </svg>
+
+  <nav>
+    <div class="logo"><span class="over">over</span><span class="logic">Logic</span></div>
+    <ul class="nav-links">
+      <li class="active">Início</li>
+      <li>Serviços</li>
+      <li>Soluções</li>
+      <li>Sobre nós</li>
+      <li>Contato</li>
+    </ul>
+    <div class="cta-nav">Fale conosco ↗</div>
+  </nav>
+
+  <div class="content">
+    <div class="cube-wrap idle" id="cubeWrap">
+      <div class="cube" id="cube">
+        <div class="face top"></div>
+        <div class="face front"></div>
+        <div class="face right"></div>
+      </div>
+      <div class="glow-floor"></div>
+    </div>
+
+    <div class="text-side">
+      <div class="eyebrow">TECNOLOGIA &nbsp;•&nbsp; INOVAÇÃO &nbsp;•&nbsp; RESULTADOS</div>
+      <h1>Transformamos ideias em <span class="accent">soluções</span> inteligentes.</h1>
+      <p class="desc">Na overLogic, desenvolvemos sistemas, aplicações e experiências digitais que impulsionam negócios e geram resultados reais.</p>
+      <div class="btn-row">
+        <button class="btn btn-primary">Nossos serviços ↗</button>
+        <button class="btn btn-secondary"><span class="play-circle">▶</span> Saiba mais</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const wrap = document.getElementById('cubeWrap');
+  const cube = document.getElementById('cube');
+
+  const BASE_X = -18;
+  const BASE_Y = 35;
+  const MAX_TILT = 32;
+
+  wrap.addEventListener('mouseenter', () => {
+    wrap.classList.remove('idle');
+  });
+
+  wrap.addEventListener('mousemove', (e) => {
+    const rect = wrap.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+
+    const dx = (e.clientX - cx) / (rect.width / 2);
+    const dy = (e.clientY - cy) / (rect.height / 2);
+
+    const rotY = BASE_Y + dx * MAX_TILT;
+    const rotX = BASE_X - dy * MAX_TILT;
+
+    cube.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(0px)`;
+  });
+
+  wrap.addEventListener('mouseleave', () => {
+    cube.style.transform = `rotateX(${BASE_X}deg) rotateY(${BASE_Y}deg) translateY(0px)`;
+    setTimeout(() => wrap.classList.add('idle'), 400);
+  });
+</script>
+</body>
+</html>
