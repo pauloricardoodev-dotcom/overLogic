@@ -3,6 +3,7 @@ import './DifferentialsSection.css';
 
 const DifferentialsSection = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isExiting, setIsExiting] = useState(false);
   const [activeDifferential, setActiveDifferential] = useState(null);
   const [animationPhase, setAnimationPhase] = useState(0);
   const sectionRef = useRef(null);
@@ -13,6 +14,7 @@ const DifferentialsSection = () => {
         const [entry] = entries;
         if (entry.isIntersecting) {
           setIsVisible(true);
+          setIsExiting(false);
           // Trigger progressive animation
           let phase = 0;
           const phases = [1, 2, 3, 4, 5, 6, 7, 8];
@@ -21,7 +23,10 @@ const DifferentialsSection = () => {
               setAnimationPhase(p);
             }, 100 + (index * 200));
           });
-          observer.unobserve(entry.target);
+        } else {
+          setIsExiting(true);
+          setIsVisible(false);
+          setAnimationPhase(0);
         }
       },
       {
@@ -71,7 +76,7 @@ const DifferentialsSection = () => {
   return (
     <div 
       ref={sectionRef}
-      className={`differentials-section ${isVisible ? 'visible' : ''}`}
+      className={`differentials-section ${isVisible ? 'visible' : ''} ${isExiting ? 'exiting' : ''}`}
     >
       {/* Background circuit lines */}
       <svg className="differentials-bg-lines" viewBox="0 0 1717 920" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">

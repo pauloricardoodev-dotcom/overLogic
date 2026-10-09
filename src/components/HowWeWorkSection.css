@@ -19,6 +19,11 @@ html:not(.dark) .how-we-work-section {
   transform: translateY(0);
 }
 
+.how-we-work-section.exiting {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
 /* Background circuit lines */
 .how-bg-lines {
   position: absolute;

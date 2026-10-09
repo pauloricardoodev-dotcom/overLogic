@@ -3,6 +3,7 @@ import './HowWeWorkSection.css';
 
 const HowWeWorkSection = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isExiting, setIsExiting] = useState(false);
   const [activeStep, setActiveStep] = useState(null);
   const [animationPhase, setAnimationPhase] = useState(0);
   const sectionRef = useRef(null);
@@ -13,6 +14,7 @@ const HowWeWorkSection = () => {
         const [entry] = entries;
         if (entry.isIntersecting) {
           setIsVisible(true);
+          setIsExiting(false);
           // Trigger progressive animation
           let phase = 0;
           const phases = [1, 2, 3, 4, 5, 6, 7];
@@ -21,7 +23,10 @@ const HowWeWorkSection = () => {
               setAnimationPhase(p);
             }, 200 + (index * 250));
           });
-          observer.unobserve(entry.target);
+        } else {
+          setIsExiting(true);
+          setIsVisible(false);
+          setAnimationPhase(0);
         }
       },
       {
@@ -71,7 +76,7 @@ const HowWeWorkSection = () => {
   return (
     <div 
       ref={sectionRef}
-      className={`how-we-work-section ${isVisible ? 'visible' : ''}`}
+      className={`how-we-work-section ${isVisible ? 'visible' : ''} ${isExiting ? 'exiting' : ''}`}
     >
       {/* Background circuit lines */}
       <svg className="how-bg-lines" viewBox="0 0 1717 920" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">

@@ -19,6 +19,11 @@ html:not(.dark) .differentials-section {
   transform: translateY(0);
 }
 
+.differentials-section.exiting {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
 /* Background circuit lines */
 .differentials-bg-lines {
   position: absolute;

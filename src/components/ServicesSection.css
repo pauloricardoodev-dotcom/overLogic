@@ -19,6 +19,11 @@ html:not(.dark) .services-section {
   transform: translateY(0);
 }
 
+.services-section.exiting {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
 /* Background circuit lines */
 .services-bg-lines {
   position: absolute;

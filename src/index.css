@@ -15,13 +15,9 @@ body {
   font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
   width: 100%;
   overflow-x: hidden;
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-html:not(.dark) body {
-  background: #ffffff;
-  color: #1a1a1a;
-}
+
 
 @keyframes floaty {
   0%, 100% {

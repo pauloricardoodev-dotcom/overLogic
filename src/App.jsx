@@ -2,6 +2,7 @@ import Hero from './components/Hero';
 import ServicesSection from './components/ServicesSection';
 import HowWeWorkSection from './components/HowWeWorkSection';
 import DifferentialsSection from './components/DifferentialsSection';
+import ContactSection from './components/ContactSection';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <ServicesSection />
       <HowWeWorkSection />
       <DifferentialsSection />
+      <ContactSection />
     </>
   );
 }

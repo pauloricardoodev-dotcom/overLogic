@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Exec(npm run)"
+      "Exec(npm run)",
+      "Exec(powershell)",
+      "Exec(ls)"
     ]
   }
 }

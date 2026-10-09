@@ -1,22 +1,50 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Cube from './Cube';
-import { useTheme } from '../contexts/ThemeContext';
 import './Hero.css';
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
-  const { isDark, toggleTheme } = useTheme();
+  const [isExiting, setIsExiting] = useState(false);
+  const heroRef = useRef(null);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoaded(true);
     }, 100);
 
-    return () => clearTimeout(timer);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (!entry.isIntersecting) {
+          setIsExiting(true);
+          setIsLoaded(false);
+        } else {
+          setIsExiting(false);
+          setIsLoaded(true);
+        }
+      },
+      {
+        threshold: 0.1
+      }
+    );
+
+    if (heroRef.current) {
+      observer.observe(heroRef.current);
+    }
+
+    return () => {
+      clearTimeout(timer);
+      if (heroRef.current) {
+        observer.unobserve(heroRef.current);
+      }
+    };
   }, []);
 
   return (
-    <div className={`hero ${isLoaded ? 'loaded' : ''}`}>
+    <div 
+      ref={heroRef}
+      className={`hero ${isLoaded ? 'loaded' : ''} ${isExiting ? 'exiting' : ''}`}
+    >
       {/* Background circuit lines */}
       <svg className="bg-lines" viewBox="0 0 1717 920" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
         <g stroke="rgba(230,23,44,0.35)" strokeWidth="1" fill="none">
@@ -51,13 +79,6 @@ const Hero = () => {
           <li>Contato</li>
         </ul>
         <div className="nav-actions">
-          <button 
-            className="theme-toggle" 
-            onClick={toggleTheme}
-            aria-label="Alternar tema"
-          >
-            {isDark ? '☀️' : '🌙'}
-          </button>
           <div className="cta-nav">Fale conosco ↗</div>
         </div>
       </nav>

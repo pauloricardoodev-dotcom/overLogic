@@ -4,6 +4,7 @@ import './ServicesSection.css';
 
 const ServicesSection = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isExiting, setIsExiting] = useState(false);
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -12,7 +13,10 @@ const ServicesSection = () => {
         const [entry] = entries;
         if (entry.isIntersecting) {
           setIsVisible(true);
-          observer.unobserve(entry.target);
+          setIsExiting(false);
+        } else {
+          setIsExiting(true);
+          setIsVisible(false);
         }
       },
       {
@@ -66,7 +70,7 @@ const ServicesSection = () => {
   return (
     <div 
       ref={sectionRef}
-      className={`services-section ${isVisible ? 'visible' : ''}`}
+      className={`services-section ${isVisible ? 'visible' : ''} ${isExiting ? 'exiting' : ''}`}
     >
       {/* Background circuit lines */}
       <svg className="services-bg-lines" viewBox="0 0 1717 920" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
