@@ -1,9 +1,22 @@
+import { useState, useEffect } from 'react';
 import Cube from './Cube';
+import { useTheme } from '../contexts/ThemeContext';
 import './Hero.css';
 
 const Hero = () => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const { isDark, toggleTheme } = useTheme();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className="hero">
+    <div className={`hero ${isLoaded ? 'loaded' : ''}`}>
       {/* Background circuit lines */}
       <svg className="bg-lines" viewBox="0 0 1717 920" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
         <g stroke="rgba(230,23,44,0.35)" strokeWidth="1" fill="none">
@@ -25,7 +38,7 @@ const Hero = () => {
       </svg>
 
       {/* Navigation */}
-      <nav>
+      <nav className={isLoaded ? 'loaded' : ''}>
         <div className="logo">
           <span className="over">over</span>
           <span className="logic">Logic</span>
@@ -37,14 +50,23 @@ const Hero = () => {
           <li>Sobre nós</li>
           <li>Contato</li>
         </ul>
-        <div className="cta-nav">Fale conosco ↗</div>
+        <div className="nav-actions">
+          <button 
+            className="theme-toggle" 
+            onClick={toggleTheme}
+            aria-label="Alternar tema"
+          >
+            {isDark ? '☀️' : '🌙'}
+          </button>
+          <div className="cta-nav">Fale conosco ↗</div>
+        </div>
       </nav>
 
       {/* Main Content */}
       <div className="content">
-        <Cube />
+        <Cube isLoaded={isLoaded} />
 
-        <div className="text-side">
+        <div className={`text-side ${isLoaded ? 'loaded' : ''}`}>
           <div className="eyebrow">TECNOLOGIA &nbsp;•&nbsp; INOVAÇÃO &nbsp;•&nbsp; RESULTADOS</div>
           <h1>
             Transformamos ideias em <span className="accent">soluções</span> inteligentes.

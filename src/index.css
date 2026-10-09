@@ -10,11 +10,17 @@
 
 html,
 body {
-  background: radial-gradient(ellipse at 30% 60%, #150707 0%, #0a0808 55%, #000 100%);
+  background: #000;
   color: #f5f3f2;
   font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
   width: 100%;
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html:not(.dark) body {
+  background: #ffffff;
+  color: #1a1a1a;
 }
 
 @keyframes floaty {
@@ -25,5 +31,4 @@ body {
     transform: rotateX(-18deg) rotateY(35deg) translateY(-18px);
   }
 }
-
 

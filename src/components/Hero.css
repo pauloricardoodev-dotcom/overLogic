@@ -1,11 +1,21 @@
 .hero {
   position: relative;
-  min-height: 920px;
+  min-height: 750px;
   width: 100%;
-  padding: 40px 64px 60px;
+  padding: 40px 64px 80px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.8s ease-out, background-color 0.3s ease;
+}
+
+html:not(.dark) .hero {
+  background: linear-gradient(180deg, #ffffff 0%, #f8f8f8 100%);
+}
+
+.hero.loaded {
+  opacity: 1;
 }
 
 /* background circuit lines */
@@ -23,6 +33,14 @@ nav {
   justify-content: space-between;
   position: relative;
   z-index: 5;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.6s ease-out 0.2s, transform 0.6s ease-out 0.2s;
+}
+
+nav.loaded {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .logo {
@@ -39,12 +57,20 @@ nav {
   color: #f5f3f2;
 }
 
+html:not(.dark) .logo span.logic {
+  color: #1a1a1a;
+}
+
 .nav-links {
   display: flex;
   gap: 40px;
   list-style: none;
   font-size: 15px;
   color: #d8d4d2;
+}
+
+html:not(.dark) .nav-links {
+  color: #666666;
 }
 
 .nav-links li {
@@ -82,16 +108,52 @@ nav {
   cursor: pointer;
 }
 
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.theme-toggle {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: #f5f3f2;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+html:not(.dark) .theme-toggle {
+  border-color: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.05);
+  color: #1a1a1a;
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+html:not(.dark) .theme-toggle:hover {
+  background: rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 0, 0, 0.3);
+}
+
 /* MAIN CONTENT */
 .content {
   position: relative;
   z-index: 5;
-  flex: 1;
   display: grid;
   grid-template-columns: 1.05fr 1fr;
   align-items: center;
   gap: 40px;
-  margin-top: 60px;
+  margin-top: 5px;
 }
 
 /* CUBE */
@@ -102,6 +164,14 @@ nav {
   align-items: center;
   justify-content: center;
   perspective: 1400px;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.8s ease-out 0.3s, transform 0.8s ease-out 0.3s;
+}
+
+.cube-wrap.loaded {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .cube {
@@ -111,6 +181,12 @@ nav {
   height: var(--s);
   transform-style: preserve-3d;
   will-change: transform;
+  opacity: 0;
+  transition: opacity 0.6s ease-out 0.5s;
+}
+
+.cube.loaded {
+  opacity: 1;
 }
 
 .face {
@@ -170,11 +246,38 @@ nav {
   height: 60px;
   background: radial-gradient(ellipse at center, rgba(255, 40, 50, 0.85) 0%, rgba(255, 40, 50, 0.25) 40%, transparent 75%);
   filter: blur(6px);
+  opacity: 0;
+  transition: opacity 0.8s ease-out 0.6s;
+}
+
+.glow-floor.loaded {
+  opacity: 1;
+  animation: glowPulse 0.4s ease-out 0.7s;
+}
+
+@keyframes glowPulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 /* TEXT SIDE */
 .text-side {
   padding-right: 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out 0.4s, transform 0.8s ease-out 0.4s;
+}
+
+.text-side.loaded {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .eyebrow {
@@ -195,6 +298,10 @@ h1 {
   margin-bottom: 26px;
 }
 
+html:not(.dark) h1 {
+  color: #1a1a1a;
+}
+
 h1 .accent {
   color: #e6172c;
 }
@@ -205,6 +312,10 @@ h1 .accent {
   line-height: 1.7;
   max-width: 480px;
   margin-bottom: 40px;
+}
+
+html:not(.dark) .desc {
+  color: #666666;
 }
 
 .btn-row {
@@ -237,6 +348,11 @@ h1 .accent {
   border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
+html:not(.dark) .btn-secondary {
+  color: #1a1a1a;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
 .play-circle {
   width: 22px;
   height: 22px;
@@ -246,6 +362,10 @@ h1 .accent {
   align-items: center;
   justify-content: center;
   font-size: 9px;
+}
+
+html:not(.dark) .play-circle {
+  border-color: #1a1a1a;
 }
 
 @media (max-width: 900px) {
@@ -314,8 +434,23 @@ h1 .accent {
     order: 2;
     padding-right: 0;
   }
-}  .cube {
+
+  .cube {
     --s: 320px;
   }
+}
 
-
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hero,
+  nav,
+  .cube-wrap,
+  .cube,
+  .glow-floor,
+  .text-side {
+    transition: none;
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}

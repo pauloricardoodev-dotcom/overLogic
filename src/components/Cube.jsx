@@ -4,7 +4,7 @@ import './Hero.css';
 const FACES = ['top', 'front', 'right', 'bottom', 'back', 'left'];
 const TILES = Array.from({ length: 9 }, (_, i) => i);
 
-const Cube = () => {
+const Cube = ({ isLoaded }) => {
   const [rotation, setRotation] = useState({ x: -18, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
   const wrapRef = useRef(null);
@@ -66,13 +66,13 @@ const Cube = () => {
   return (
     <div
       ref={wrapRef}
-      className="cube-wrap"
+      className={`cube-wrap ${isLoaded ? 'loaded' : ''}`}
       onMouseEnter={handleMouseEnter}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
       <div
-        className="cube"
+        className={`cube ${isLoaded ? 'loaded' : ''}`}
         style={{
           transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg) translateY(0px)`,
           transition: isHovering ? 'transform 0.1s ease-out' : 'none',
@@ -86,7 +86,7 @@ const Cube = () => {
           </div>
         ))}
       </div>
-      <div className="glow-floor"></div>
+      <div className={`glow-floor ${isLoaded ? 'loaded' : ''}`}></div>
     </div>
   );
 };

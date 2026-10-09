@@ -1,0 +1,684 @@
+.differentials-section {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  padding: 60px 64px 80px;
+  background: #0a0203;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out, background-color 0.3s ease;
+}
+
+html:not(.dark) .differentials-section {
+  background: #f8f8f8;
+}
+
+.differentials-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Background circuit lines */
+.differentials-bg-lines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.differentials-container {
+  position: relative;
+  z-index: 5;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Header */
+.differentials-header {
+  margin-bottom: 100px;
+  max-width: 700px;
+}
+
+.differentials-label {
+  color: #e6172c;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  letter-spacing: 2.5px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.differentials-label.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.differentials-title {
+  font-size: 52px;
+  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+  color: #f5f3f2;
+  margin-bottom: 24px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s ease-out 0.1s, transform 0.6s ease-out 0.1s;
+}
+
+html:not(.dark) .differentials-title {
+  color: #1a1a1a;
+}
+
+.differentials-title.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.differentials-title .accent {
+  color: #e6172c;
+}
+
+.differentials-description {
+  color: #9c9694;
+  font-size: 16px;
+  line-height: 1.7;
+  max-width: 550px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s ease-out 0.2s, transform 0.6s ease-out 0.2s;
+}
+
+html:not(.dark) .differentials-description {
+  color: #666666;
+}
+
+.differentials-description.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Core Layout */
+.differentials-core-layout {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 50px;
+  min-height: 680px;
+  margin-bottom: 120px;
+}
+
+/* Connection Lines */
+.connection-lines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.8s ease-out;
+}
+
+.connection-lines.visible {
+  opacity: 1;
+}
+
+.connection-line {
+  position: absolute;
+  opacity: 0.4;
+  transition: opacity 0.3s ease-out;
+}
+
+.connection-line.active {
+  opacity: 0.8;
+}
+
+.connection-line.top-left {
+  top: 80px;
+  left: 0;
+  width: calc(50% - 200px);
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255, 60, 70, 0.6), rgba(255, 60, 70, 0.2));
+}
+
+.connection-line.top-right {
+  top: 80px;
+  right: 0;
+  width: calc(50% - 200px);
+  height: 1px;
+  background: linear-gradient(270deg, rgba(255, 60, 70, 0.6), rgba(255, 60, 70, 0.2));
+}
+
+.connection-line.bottom-left {
+  bottom: 80px;
+  left: 0;
+  width: calc(50% - 200px);
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255, 60, 70, 0.6), rgba(255, 60, 70, 0.2));
+}
+
+.connection-line.bottom-right {
+  bottom: 80px;
+  right: 0;
+  width: calc(50% - 200px);
+  height: 1px;
+  background: linear-gradient(270deg, rgba(255, 60, 70, 0.6), rgba(255, 60, 70, 0.2));
+}
+
+.connection-point {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: rgba(255, 60, 70, 0.5);
+  border-radius: 50%;
+  transition: background 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+
+.connection-line.top-left .connection-point {
+  right: 0;
+  top: -2.5px;
+}
+
+.connection-line.top-right .connection-point {
+  left: 0;
+  top: -2.5px;
+}
+
+.connection-line.bottom-left .connection-point {
+  right: 0;
+  top: -2.5px;
+}
+
+.connection-line.bottom-right .connection-point {
+  left: 0;
+  top: -2.5px;
+}
+
+.connection-line.active .connection-point {
+  background: rgba(255, 60, 70, 0.9);
+  box-shadow: 0 0 10px rgba(255, 60, 70, 0.6);
+}
+
+/* Central Core */
+.central-core {
+  grid-column: 2;
+  grid-row: 1 / span 3;
+  position: relative;
+  width: 400px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.central-core.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.central-core.reacting {
+  transform: scale(1.02);
+}
+
+.core-visual {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.core-ring {
+  transform-origin: center;
+  opacity: 0;
+  transition: opacity 0.6s ease-out;
+}
+
+.core-ring.active {
+  opacity: 1;
+}
+
+.core-ring.outer {
+  animation: slowRotate 60s linear infinite;
+}
+
+.core-ring.middle {
+  animation: slowRotate 45s linear infinite reverse;
+}
+
+.core-ring.inner {
+  animation: slowRotate 30s linear infinite;
+}
+
+.core-circle {
+  opacity: 0;
+  transition: opacity 0.6s ease-out 0.2s;
+}
+
+.core-circle.active {
+  opacity: 1;
+}
+
+.core-indicators {
+  opacity: 0;
+  transition: opacity 0.6s ease-out 0.3s;
+}
+
+.core-indicators.visible {
+  opacity: 1;
+}
+
+.core-glow {
+  opacity: 0;
+  animation: subtlePulse 4s ease-in-out infinite;
+}
+
+.central-core.visible .core-glow {
+  opacity: 1;
+}
+
+.core-logo {
+  position: relative;
+  z-index: 10;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.6s ease-out 0.4s, transform 0.6s ease-out 0.4s;
+}
+
+.core-logo.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.core-over {
+  color: #f5f3f2;
+}
+
+html:not(.dark) .core-over {
+  color: #1a1a1a;
+}
+
+.core-logic {
+  color: #e6172c;
+}
+
+/* Differentials Grid */
+.differentials-grid {
+  grid-column: 1 / span 3;
+  grid-row: 1 / span 3;
+  position: relative;
+}
+
+.differential-item {
+  position: absolute;
+  background: rgba(15, 3, 5, 0.3);
+  border: 1px solid rgba(255, 60, 70, 0.15);
+  border-radius: 12px;
+  padding: 28px;
+  width: 280px;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out,
+    border-color 0.3s ease-out,
+    box-shadow 0.3s ease-out,
+    transform 0.3s ease-out;
+}
+
+html:not(.dark) .differential-item {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(230, 23, 44, 0.1);
+}
+
+.differential-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.differential-item.active {
+  border-color: rgba(255, 60, 70, 0.4);
+  box-shadow: 0 8px 32px rgba(230, 23, 44, 0.12);
+  transform: translateY(-4px) translateX(4px);
+}
+
+.differential-item.top-left {
+  top: -60px;
+  left: 0;
+}
+
+.differential-item.top-right {
+  top: 20px;
+  right: 0;
+}
+
+.differential-item.bottom-left {
+  bottom: 0;
+  left: 0;
+}
+
+.differential-item.bottom-right {
+  bottom: -40px;
+  right: 0;
+}
+
+.differential-visual {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  opacity: 0.7;
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.differential-item:hover .differential-visual {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.differential-visual-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.differential-content {
+  flex: 1;
+}
+
+.differential-number {
+  color: rgba(255, 80, 90, 0.6);
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+.differential-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #f5f3f2;
+  margin-bottom: 12px;
+  letter-spacing: -0.2px;
+  line-height: 1.3;
+}
+
+html:not(.dark) .differential-title {
+  color: #1a1a1a;
+}
+
+.differential-description {
+  color: #9c9694;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+html:not(.dark) .differential-description {
+  color: #666666;
+}
+
+/* Closing Statement */
+.closing-statement {
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.closing-statement.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.closing-text {
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: #f5f3f2;
+  line-height: 1.2;
+  margin-bottom: 24px;
+}
+
+html:not(.dark) .closing-text {
+  color: #1a1a1a;
+}
+
+.closing-text .accent {
+  color: #e6172c;
+}
+
+.closing-tags {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: rgba(255, 80, 90, 0.7);
+  font-weight: 600;
+}
+
+.closing-tags .separator {
+  color: rgba(255, 80, 90, 0.4);
+}
+
+/* Animations */
+@keyframes slowRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes subtlePulse {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .differentials-section,
+  .differentials-label,
+  .differentials-title,
+  .differentials-description,
+  .central-core,
+  .core-ring,
+  .core-circle,
+  .core-indicators,
+  .core-logo,
+  .differential-item,
+  .connection-lines,
+  .closing-statement {
+    transition: none;
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  
+  .core-ring {
+    animation: none;
+  }
+  
+  .core-glow {
+    animation: none;
+  }
+  
+  .differential-item:hover {
+    transform: none;
+  }
+  
+  .central-core.reacting {
+    transform: none;
+  }
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .differentials-section {
+    padding: 80px 40px 100px;
+  }
+  
+  .differentials-header {
+    margin-bottom: 80px;
+  }
+  
+  .differentials-title {
+    font-size: 42px;
+  }
+  
+  .differentials-core-layout {
+    gap: 40px;
+    min-height: 550px;
+  }
+  
+  .central-core {
+    width: 320px;
+    height: 320px;
+  }
+  
+  .core-logo {
+    font-size: 24px;
+  }
+  
+  .differential-item {
+    width: 240px;
+    padding: 24px;
+  }
+  
+  .differential-title {
+    font-size: 16px;
+  }
+  
+  .differential-description {
+    font-size: 13px;
+  }
+  
+  .connection-line.top-left,
+  .connection-line.top-right,
+  .connection-line.bottom-left,
+  .connection-line.bottom-right {
+    width: calc(50% - 160px);
+  }
+  
+  .connection-line.top-left,
+  .connection-line.top-right {
+    top: 70px;
+  }
+  
+  .connection-line.bottom-left,
+  .connection-line.bottom-right {
+    bottom: 70px;
+  }
+  
+  .closing-text {
+    font-size: 30px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .differentials-section {
+    padding: 60px 24px 80px;
+  }
+  
+  .differentials-header {
+    margin-bottom: 60px;
+  }
+  
+  .differentials-title {
+    font-size: 32px;
+  }
+  
+  .differentials-description {
+    font-size: 15px;
+  }
+  
+  /* Vertical layout for mobile */
+  .differentials-core-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    min-height: auto;
+    margin-bottom: 80px;
+  }
+  
+  .connection-lines {
+    display: none;
+  }
+  
+  .central-core {
+    width: 200px;
+    height: 200px;
+    order: 1;
+  }
+  
+  .core-logo {
+    font-size: 18px;
+  }
+  
+  .differentials-grid {
+    position: relative;
+    width: 100%;
+    order: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  
+  .differential-item {
+    position: relative;
+    width: 100%;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    padding: 24px;
+  }
+  
+  .differential-item.active {
+    transform: translateY(-2px);
+  }
+  
+  .differential-visual {
+    height: 60px;
+  }
+  
+  .differential-title {
+    font-size: 16px;
+  }
+  
+  .differential-description {
+    font-size: 14px;
+  }
+  
+  .closing-text {
+    font-size: 24px;
+  }
+  
+  .closing-tags {
+    flex-direction: column;
+    gap: 8px;
+    letter-spacing: 2px;
+  }
+  
+  .closing-tags .separator {
+    display: none;
+  }
+}
