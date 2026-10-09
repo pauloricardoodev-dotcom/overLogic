@@ -1,11 +1,13 @@
 .hero {
   position: relative;
-  min-height: 750px;
+  min-height: 100vh;
+  min-height: 100dvh;
   width: 100%;
   padding: 40px 64px 80px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  background: #00030a;
   opacity: 0;
   transition: opacity 0.8s ease-out, background-color 0.3s ease;
 }
@@ -149,6 +151,7 @@ html:not(.dark) .theme-toggle:hover {
 .content {
   position: relative;
   z-index: 5;
+  flex: 1;
   display: grid;
   grid-template-columns: 1.05fr 1fr;
   align-items: center;
@@ -159,7 +162,7 @@ html:not(.dark) .theme-toggle:hover {
 /* CUBE */
 .cube-wrap {
   position: relative;
-  height: 720px;
+  height: 600px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -175,7 +178,7 @@ html:not(.dark) .theme-toggle:hover {
 }
 
 .cube {
-  --s: 510px;
+  --s: 357px;
   position: relative;
   width: var(--s);
   height: var(--s);
@@ -242,7 +245,7 @@ html:not(.dark) .theme-toggle:hover {
   bottom: 26px;
   left: 50%;
   transform: translateX(-50%);
-  width: 760px;
+  width: 530px;
   height: 60px;
   background: radial-gradient(ellipse at center, rgba(255, 40, 50, 0.85) 0%, rgba(255, 40, 50, 0.25) 40%, transparent 75%);
   filter: blur(6px);
@@ -383,7 +386,7 @@ html:not(.dark) .play-circle {
   }
 
   .cube-wrap {
-    height: 400px;
+    height: 340px;
     order: 1;
   }
 
@@ -422,7 +425,7 @@ html:not(.dark) .play-circle {
   }
 
   .glow-floor {
-    width: 400px;
+    width: 280px;
     height: 40px;
   }
 
@@ -436,7 +439,7 @@ html:not(.dark) .play-circle {
   }
 
   .cube {
-    --s: 320px;
+    --s: 224px;
   }
 }
 

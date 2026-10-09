@@ -24,7 +24,7 @@ const ServiceVisual = ({ type }) => {
             
             {/* Window 2 - Stacked */}
             <g transform="translate(60, 55)">
-              <rect x="0" y="0" width="100" height="70" fill="rgba(15, 3, 5, 0.85)" stroke="rgba(255, 60, 70, 0.4)" strokeWidth="0.8"/>
+              <rect x="0" y="0" width="100" height="70" fill="rgba(9, 18, 38, 0.85)" stroke="rgba(255, 60, 70, 0.4)" strokeWidth="0.8"/>
               <rect x="0" y="0" width="100" height="20" fill="rgba(30, 8, 12, 0.9)" stroke="rgba(255, 60, 70, 0.3)" strokeWidth="0.5"/>
               <circle cx="10" cy="10" r="3" fill="rgba(255, 50, 60, 0.7)"/>
               <circle cx="20" cy="10" r="3" fill="rgba(255, 70, 80, 0.4)"/>
@@ -49,7 +49,7 @@ const ServiceVisual = ({ type }) => {
               <circle cx="24" cy="11" r="4" fill="rgba(255, 80, 90, 0.5)"/>
               <circle cx="36" cy="11" r="4" fill="rgba(255, 100, 110, 0.3)"/>
               {/* URL bar */}
-              <rect x="50" y="5" width="95" height="12" fill="rgba(15, 3, 5, 0.8)" stroke="rgba(255, 60, 70, 0.3)" strokeWidth="0.5" rx="2"/>
+              <rect x="50" y="5" width="95" height="12" fill="rgba(9, 18, 38, 0.8)" stroke="rgba(255, 60, 70, 0.3)" strokeWidth="0.5" rx="2"/>
               {/* Content */}
               <rect x="12" y="32" width="45" height="8" fill="rgba(255, 40, 50, 0.2)" rx="1"/>
               <rect x="12" y="46" width="70" height="6" fill="rgba(255, 40, 50, 0.12)" rx="1"/>
@@ -62,7 +62,7 @@ const ServiceVisual = ({ type }) => {
             
             {/* Secondary window behind */}
             <g transform="translate(45, 40)">
-              <rect x="0" y="0" width="130" height="85" fill="rgba(15, 3, 5, 0.7)" stroke="rgba(255, 60, 70, 0.3)" strokeWidth="0.6"/>
+              <rect x="0" y="0" width="130" height="85" fill="rgba(9, 18, 38, 0.7)" stroke="rgba(255, 60, 70, 0.3)" strokeWidth="0.6"/>
             </g>
             
             <ellipse cx="100" cy="145" rx="55" ry="10" fill="rgba(255, 40, 50, 0.25)" filter="url(#glow)"/>
@@ -87,7 +87,7 @@ const ServiceVisual = ({ type }) => {
               <rect x="80" y="38" width="50" height="35" fill="rgba(255, 40, 50, 0.1)" stroke="rgba(255, 60, 70, 0.25)" strokeWidth="0.5" rx="2"/>
               
               {/* Features section */}
-              <rect x="0" y="85" width="140" height="45" fill="rgba(15, 3, 5, 0.85)" stroke="rgba(255, 60, 70, 0.4)" strokeWidth="0.6"/>
+              <rect x="0" y="85" width="140" height="45" fill="rgba(9, 18, 38, 0.85)" stroke="rgba(255, 60, 70, 0.4)" strokeWidth="0.6"/>
               <rect x="10" y="95" width="35" height="28" fill="rgba(255, 30, 40, 0.08)" stroke="rgba(255, 50, 60, 0.2)" strokeWidth="0.5" rx="1"/>
               <rect x="52" y="95" width="35" height="28" fill="rgba(255, 30, 40, 0.08)" stroke="rgba(255, 50, 60, 0.2)" strokeWidth="0.5" rx="1"/>
               <rect x="94" y="95" width="35" height="28" fill="rgba(255, 30, 40, 0.08)" stroke="rgba(255, 50, 60, 0.2)" strokeWidth="0.5" rx="1"/>
@@ -113,7 +113,7 @@ const ServiceVisual = ({ type }) => {
               
               {/* Cart sidebar */}
               <g transform="translate(95, 0)">
-                <rect x="0" y="0" width="65" height="80" fill="rgba(15, 3, 5, 0.85)" stroke="rgba(255, 60, 70, 0.4)" strokeWidth="0.8"/>
+                <rect x="0" y="0" width="65" height="80" fill="rgba(9, 18, 38, 0.85)" stroke="rgba(255, 60, 70, 0.4)" strokeWidth="0.8"/>
                 <rect x="8" y="8" width="20" height="6" fill="rgba(255, 40, 50, 0.25)" rx="1"/>
                 {/* Cart items */}
                 <rect x="8" y="20" width="49" height="18" fill="rgba(255, 30, 40, 0.08)" stroke="rgba(255, 50, 60, 0.2)" strokeWidth="0.5" rx="1"/>
@@ -124,9 +124,9 @@ const ServiceVisual = ({ type }) => {
               
               {/* Product grid below */}
               <g transform="translate(0, 90)">
-                <rect x="0" y="0" width="42" height="35" fill="rgba(15, 3, 5, 0.8)" stroke="rgba(255, 50, 60, 0.3)" strokeWidth="0.6"/>
-                <rect x="48" y="0" width="42" height="35" fill="rgba(15, 3, 5, 0.8)" stroke="rgba(255, 50, 60, 0.3)" strokeWidth="0.6"/>
-                <rect x="96" y="0" width="42" height="35" fill="rgba(15, 3, 5, 0.8)" stroke="rgba(255, 50, 60, 0.3)" strokeWidth="0.6"/>
+                <rect x="0" y="0" width="42" height="35" fill="rgba(9, 18, 38, 0.8)" stroke="rgba(255, 50, 60, 0.3)" strokeWidth="0.6"/>
+                <rect x="48" y="0" width="42" height="35" fill="rgba(9, 18, 38, 0.8)" stroke="rgba(255, 50, 60, 0.3)" strokeWidth="0.6"/>
+                <rect x="96" y="0" width="42" height="35" fill="rgba(9, 18, 38, 0.8)" stroke="rgba(255, 50, 60, 0.3)" strokeWidth="0.6"/>
               </g>
             </g>
             
