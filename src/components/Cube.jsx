@@ -1,6 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
 import './Hero.css';
 
+const FACES = ['top', 'front', 'right', 'bottom', 'back', 'left'];
+const TILES = Array.from({ length: 9 }, (_, i) => i);
+
 const Cube = () => {
   const [rotation, setRotation] = useState({ x: -18, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
@@ -75,12 +78,13 @@ const Cube = () => {
           transition: isHovering ? 'transform 0.1s ease-out' : 'none',
         }}
       >
-        <div className="face top"></div>
-        <div className="face front"></div>
-        <div className="face right"></div>
-        <div className="face bottom"></div>
-        <div className="face back"></div>
-        <div className="face left"></div>
+        {FACES.map((face) => (
+          <div key={face} className={`face ${face}`}>
+            {TILES.map((i) => (
+              <span key={i} className="tile" />
+            ))}
+          </div>
+        ))}
       </div>
       <div className="glow-floor"></div>
     </div>
