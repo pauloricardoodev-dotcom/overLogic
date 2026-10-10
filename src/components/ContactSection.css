@@ -1,20 +1,20 @@
 .contact-section {
   position: relative;
   min-height: 100vh;
-  background: linear-gradient(135deg, #0a0203 0%, #140508 50%, #0a0203 100%);
+  /* Topo começa na cor de Differentials e funde para o azul */
+  background:
+    linear-gradient(180deg, #0a0203 0, transparent 280px),
+    linear-gradient(135deg, #050b18 0%, #0a1530 50%, #050b18 100%);
   overflow: hidden;
-  padding: 120px 5% 80px;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  padding: 160px 5% 80px;
 }
 
-.contact-section.visible {
+.contact-section.visible .contact-container {
   opacity: 1;
   transform: translateY(0);
 }
 
-.contact-section.exiting {
+.contact-section.exiting .contact-container {
   opacity: 0;
   transform: translateY(-30px);
   transition: opacity 0.5s ease-out, transform 0.5s ease-out;
@@ -22,6 +22,8 @@
 
 /* Background Lines */
 .contact-bg-lines {
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 200px, #000 calc(100% - 200px), transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0, #000 200px, #000 calc(100% - 200px), transparent 100%);
   position: absolute;
   top: 0;
   left: 0;
@@ -33,6 +35,9 @@
 
 /* Container */
 .contact-container {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
   position: relative;
   max-width: 1400px;
   margin: 0 auto;
@@ -90,7 +95,7 @@
 
 /* Contact Form */
 .contact-form-wrapper {
-  background: rgba(20, 5, 8, 0.6);
+  background: rgba(9, 18, 38, 0.6);
   border: 1px solid rgba(255, 60, 70, 0.2);
   border-radius: 12px;
   padding: 40px;
@@ -118,7 +123,7 @@
 
 .form-group input,
 .form-group textarea {
-  background: rgba(10, 2, 3, 0.8);
+  background: rgba(5, 11, 24, 0.8);
   border: 1px solid rgba(255, 60, 70, 0.3);
   border-radius: 8px;
   padding: 14px 16px;
@@ -217,14 +222,14 @@
   align-items: center;
   gap: 16px;
   padding: 20px;
-  background: rgba(20, 5, 8, 0.4);
+  background: rgba(9, 18, 38, 0.4);
   border: 1px solid rgba(255, 60, 70, 0.15);
   border-radius: 8px;
   transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .contact-item:hover {
-  background: rgba(20, 5, 8, 0.6);
+  background: rgba(9, 18, 38, 0.6);
   border-color: rgba(255, 60, 70, 0.3);
 }
 
@@ -287,7 +292,7 @@
 .social-icon {
   width: 44px;
   height: 44px;
-  background: rgba(20, 5, 8, 0.6);
+  background: rgba(9, 18, 38, 0.6);
   border: 1px solid rgba(255, 60, 70, 0.2);
   border-radius: 8px;
   display: flex;
@@ -317,6 +322,20 @@
   padding-top: 40px;
   border-top: 1px solid rgba(255, 60, 70, 0.15);
   margin-top: 60px;
+  position: relative;
+}
+
+/* Fim da página: o footer apaga em fade out até o preto puro */
+.contact-footer::before {
+  content: "";
+  position: absolute;
+  top: -80px;
+  bottom: -80px;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, transparent 0, rgba(0, 0, 0, 0.7) 45%, #000 100%);
+  z-index: -1;
 }
 
 @media (max-width: 640px) {
@@ -353,7 +372,7 @@
 /* Responsive adjustments */
 @media (max-width: 640px) {
   .contact-section {
-    padding: 80px 5% 60px;
+    padding: 100px 5% 60px;
   }
 
   .contact-form-wrapper {

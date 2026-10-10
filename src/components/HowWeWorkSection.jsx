@@ -75,6 +75,7 @@ const HowWeWorkSection = () => {
 
   return (
     <div 
+      id="solucoes"
       ref={sectionRef}
       className={`how-we-work-section ${isVisible ? 'visible' : ''} ${isExiting ? 'exiting' : ''}`}
     >

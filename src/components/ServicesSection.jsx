@@ -69,12 +69,13 @@ const ServicesSection = () => {
 
   return (
     <div 
+      id="servicos"
       ref={sectionRef}
       className={`services-section ${isVisible ? 'visible' : ''} ${isExiting ? 'exiting' : ''}`}
     >
       {/* Background circuit lines */}
       <svg className="services-bg-lines" viewBox="0 0 1717 920" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-        <g stroke="rgba(230,23,44,0.25)" strokeWidth="1" fill="none">
+        <g stroke="rgba(0, 220, 255, 0.25)" strokeWidth="1" fill="none">
           <polyline points="0,200 80,200 80,350 40,350" />
           <polyline points="1717,250 1650,250 1650,150 1550,150" />
           <polyline points="1717,700 1600,700 1600,850 1717,850" />
@@ -82,7 +83,7 @@ const ServicesSection = () => {
           <polyline points="650,50 650,150 780,150" />
           <polyline points="0,750 100,750 100,880" />
         </g>
-        <g fill="#e6172c">
+        <g fill="#00dcff">
           <circle cx="1630" cy="230" r="3" />
           <circle cx="1717" cy="130" r="3" />
           <circle cx="1680" cy="550" r="2.5" />

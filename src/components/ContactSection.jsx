@@ -108,6 +108,7 @@ const ContactSection = () => {
 
   return (
     <div 
+      id="contato"
       ref={sectionRef}
       className={`contact-section ${isVisible ? 'visible' : ''} ${isExiting ? 'exiting' : ''}`}
     >

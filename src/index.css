@@ -8,9 +8,19 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 html,
 body {
-  background: #050b18;
+  background: #000;
   color: #f5f3f2;
   font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
   width: 100%;

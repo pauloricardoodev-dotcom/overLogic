@@ -2,30 +2,30 @@
   position: relative;
   min-height: 100vh;
   width: 100%;
-  padding: 100px 64px 120px;
-  background: #050b18;
+  padding: 140px 64px 160px;
+  /* Topo começa na cor de Services e funde para o azul */
+  background: linear-gradient(180deg, #0a0203 0, #050b18 280px);
   overflow: hidden;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out, background-color 0.3s ease;
 }
 
 html:not(.dark) .how-we-work-section {
   background: #f8f8f8;
 }
 
-.how-we-work-section.visible {
+.how-we-work-section.visible .how-container {
   opacity: 1;
   transform: translateY(0);
 }
 
-.how-we-work-section.exiting {
+.how-we-work-section.exiting .how-container {
   opacity: 0;
   transform: translateY(30px);
 }
 
 /* Background circuit lines */
 .how-bg-lines {
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 200px, #000 calc(100% - 200px), transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0, #000 200px, #000 calc(100% - 200px), transparent 100%);
   position: absolute;
   inset: 0;
   pointer-events: none;
@@ -33,6 +33,9 @@ html:not(.dark) .how-we-work-section {
 }
 
 .how-container {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
   position: relative;
   z-index: 5;
   max-width: 1400px;
@@ -381,6 +384,7 @@ html:not(.dark) .closing-text {
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .how-we-work-section,
+  .how-container,
   .how-label,
   .how-title,
   .how-description,
@@ -417,7 +421,7 @@ html:not(.dark) .closing-text {
 /* Tablet */
 @media (max-width: 1024px) {
   .how-we-work-section {
-    padding: 80px 40px 100px;
+    padding: 110px 40px 130px;
   }
   
   .how-header {
@@ -452,7 +456,7 @@ html:not(.dark) .closing-text {
 /* Mobile */
 @media (max-width: 768px) {
   .how-we-work-section {
-    padding: 60px 24px 80px;
+    padding: 80px 24px 100px;
   }
   
   .how-header {

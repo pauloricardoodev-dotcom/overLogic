@@ -5,23 +5,14 @@ const FACES = ['top', 'front', 'right', 'bottom', 'back', 'left'];
 const TILES = Array.from({ length: 9 }, (_, i) => i);
 
 const Cube = ({ isLoaded }) => {
-  const [rotation, setRotation] = useState({ x: -18, y: 0 });
+  const [rotation, setRotation] = useState({ x: -18, y: 35 });
   const animationRef = useRef(null);
-  const lastYRef = useRef(0);
+  // Começa já em ângulo (3 faces visíveis), nunca de frente "chapado"
+  const lastYRef = useRef(35);
 
   const BASE_X = -18;
   const BASE_Y = 35;
   const ROTATION_SPEED = 0.15;
-
-  // Cores sólidas para cada face do cubo normal
-  const faceColors = {
-    front: 'rgba(230, 23, 44, 0.25)',
-    back: 'rgba(230, 23, 44, 0.2)',
-    right: 'rgba(230, 23, 44, 0.22)',
-    left: 'rgba(230, 23, 44, 0.22)',
-    top: 'rgba(230, 23, 44, 0.18)',
-    bottom: 'rgba(230, 23, 44, 0.15)'
-  };
 
   useEffect(() => {
     let currentY = lastYRef.current;
@@ -71,7 +62,6 @@ const Cube = ({ isLoaded }) => {
           </div>
         ))}
       </div>
-      <div className={`glow-floor ${isLoaded ? 'loaded' : ''}`}></div>
     </div>
   );
 };

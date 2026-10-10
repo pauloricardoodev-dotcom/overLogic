@@ -2,30 +2,30 @@
   position: relative;
   min-height: 100vh;
   width: 100%;
-  padding: 20px 64px 100px;
-  background: #050b18;
+  padding: 100px 64px 140px;
+  /* Topo começa na cor do Hero e funde para o vermelho */
+  background: linear-gradient(180deg, #00030a 0, #0a0203 280px);
   overflow: hidden;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out, background-color 0.3s ease;
 }
 
 html:not(.dark) .services-section {
   background: #f8f8f8;
 }
 
-.services-section.visible {
+.services-section.visible .services-container {
   opacity: 1;
   transform: translateY(0);
 }
 
-.services-section.exiting {
+.services-section.exiting .services-container {
   opacity: 0;
   transform: translateY(30px);
 }
 
 /* Background circuit lines */
 .services-bg-lines {
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 200px, #000 calc(100% - 200px), transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0, #000 200px, #000 calc(100% - 200px), transparent 100%);
   position: absolute;
   inset: 0;
   pointer-events: none;
@@ -33,6 +33,9 @@ html:not(.dark) .services-section {
 }
 
 .services-container {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
   position: relative;
   z-index: 5;
   max-width: 1400px;
@@ -46,7 +49,7 @@ html:not(.dark) .services-section {
 }
 
 .services-label {
-  color: #e6172c;
+  color: #00dcff;
   font-family: 'Courier New', monospace;
   font-size: 12px;
   letter-spacing: 2.5px;
@@ -84,7 +87,7 @@ html:not(.dark) .services-title {
 }
 
 .services-title .accent {
-  color: #e6172c;
+  color: #00dcff;
 }
 
 .services-description {
@@ -116,8 +119,8 @@ html:not(.dark) .services-description {
 /* Card */
 .service-card {
   position: relative;
-  background: rgba(9, 18, 38, 0.6);
-  border: 1px solid rgba(255, 80, 90, 0.25);
+  background: rgba(15, 3, 5, 0.6);
+  border: 1px solid rgba(0, 220, 255, 0.25);
   border-radius: 12px;
   padding: 40px;
   display: flex;
@@ -138,7 +141,7 @@ html:not(.dark) .services-description {
 
 html:not(.dark) .service-card {
   background: rgba(255, 255, 255, 0.8);
-  border-color: rgba(230, 23, 44, 0.15);
+  border-color: rgba(0, 220, 255, 0.15);
 }
 
 .services-section.visible .service-card {
@@ -148,10 +151,10 @@ html:not(.dark) .service-card {
 
 .service-card:hover {
   transform: scale(1.015) translateY(-2px);
-  border-color: rgba(255, 80, 90, 0.5);
+  border-color: rgba(0, 220, 255, 0.5);
   box-shadow: 
-    0 8px 32px rgba(230, 23, 44, 0.15),
-    0 0 60px rgba(255, 40, 50, 0.1);
+    0 8px 32px rgba(0, 220, 255, 0.15),
+    0 0 60px rgba(0, 220, 255, 0.1);
 }
 
 .service-card::after {
@@ -161,7 +164,7 @@ html:not(.dark) .service-card {
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(255, 60, 70, 0.6), transparent);
+  background: linear-gradient(90deg, transparent, rgba(0, 220, 255, 0.6), transparent);
   opacity: 0;
   transition: opacity 0.3s ease-out;
 }
@@ -176,7 +179,7 @@ html:not(.dark) .service-card {
 }
 
 .service-number {
-  color: rgba(255, 80, 90, 0.6);
+  color: rgba(0, 220, 255, 0.6);
   font-family: 'Courier New', monospace;
   font-size: 13px;
   font-weight: 600;
@@ -217,16 +220,16 @@ html:not(.dark) .service-description {
 
 .service-tag {
   font-size: 12px;
-  color: rgba(255, 80, 90, 0.8);
-  background: rgba(255, 40, 50, 0.08);
+  color: rgba(0, 220, 255, 0.8);
+  background: rgba(0, 220, 255, 0.08);
   padding: 6px 12px;
   border-radius: 4px;
-  border: 1px solid rgba(255, 60, 70, 0.2);
+  border: 1px solid rgba(0, 220, 255, 0.2);
   font-weight: 500;
 }
 
 .service-cta {
-  color: #e6172c;
+  color: #00dcff;
   font-size: 14px;
   font-weight: 600;
   display: flex;
@@ -267,6 +270,7 @@ html:not(.dark) .service-description {
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .services-section,
+  .services-container,
   .services-label,
   .services-title,
   .services-description,
@@ -284,7 +288,7 @@ html:not(.dark) .service-description {
 /* Tablet */
 @media (max-width: 1024px) {
   .services-section {
-    padding: 100px 40px 80px;
+    padding: 120px 40px 110px;
   }
   
   .services-title {
@@ -309,7 +313,7 @@ html:not(.dark) .service-description {
 /* Mobile */
 @media (max-width: 768px) {
   .services-section {
-    padding: 80px 24px 60px;
+    padding: 100px 24px 80px;
   }
   
   .services-header {
@@ -352,4 +356,13 @@ html:not(.dark) .service-description {
   .service-card:hover {
     transform: translateY(-2px);
   }
+}
+
+/* Tema claro: ciano mais escuro para manter contraste nos textos */
+html:not(.dark) .services-label,
+html:not(.dark) .services-title .accent,
+html:not(.dark) .service-number,
+html:not(.dark) .service-tag,
+html:not(.dark) .service-cta {
+  color: #0081a8;
 }

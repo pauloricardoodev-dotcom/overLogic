@@ -2,6 +2,14 @@ import { useState, useEffect, useRef } from 'react';
 import Cube from './Cube';
 import './Hero.css';
 
+const NAV_LINKS = [
+  { label: 'Início', href: '#inicio' },
+  { label: 'Serviços', href: '#servicos' },
+  { label: 'Soluções', href: '#solucoes' },
+  { label: 'Sobre nós', href: '#sobre' },
+  { label: 'Contato', href: '#contato' },
+];
+
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isExiting, setIsExiting] = useState(false);
@@ -42,6 +50,7 @@ const Hero = () => {
 
   return (
     <div 
+      id="inicio"
       ref={heroRef}
       className={`hero ${isLoaded ? 'loaded' : ''} ${isExiting ? 'exiting' : ''}`}
     >
@@ -72,14 +81,13 @@ const Hero = () => {
           <span className="logic">Logic</span>
         </div>
         <ul className="nav-links">
-          <li className="active">Início</li>
-          <li>Serviços</li>
-          <li>Soluções</li>
-          <li>Sobre nós</li>
-          <li>Contato</li>
+          {NAV_LINKS.map(({ label, href }, i) => (
+            <li key={href} className={i === 0 ? 'active' : ''}>
+              <a href={href}>{label}</a>
+            </li>
+          ))}
         </ul>
         <div className="nav-actions">
-          <div className="cta-nav">Fale conosco ↗</div>
         </div>
       </nav>
 
@@ -96,7 +104,12 @@ const Hero = () => {
             Na overLogic, desenvolvemos sistemas, aplicações e experiências digitais que impulsionam negócios e geram resultados reais.
           </p>
           <div className="btn-row">
-            <button className="btn btn-primary">Nossos serviços ↗</button>
+            <button
+              className="btn btn-primary"
+              onClick={() => document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              Fale conosco ↗
+            </button>
             <button className="btn btn-secondary">
               <span className="play-circle">▶</span> Saiba mais
             </button>
