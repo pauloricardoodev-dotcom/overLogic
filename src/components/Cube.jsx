@@ -1,6 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
 import './Hero.css';
 
+const FACES = ['top', 'front', 'right', 'bottom', 'back', 'left'];
+const TILES = Array.from({ length: 9 }, (_, i) => i);
+
 const Cube = ({ isLoaded }) => {
   const [rotation, setRotation] = useState({ x: -18, y: 0 });
   const animationRef = useRef(null);
@@ -60,12 +63,13 @@ const Cube = ({ isLoaded }) => {
           transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg) translateY(0px)`,
         }}
       >
-        {createFace('top', faceColors.top)}
-        {createFace('front', faceColors.front)}
-        {createFace('right', faceColors.right)}
-        {createFace('bottom', faceColors.bottom)}
-        {createFace('back', faceColors.back)}
-        {createFace('left', faceColors.left)}
+        {FACES.map((face) => (
+          <div key={face} className={`face ${face}`}>
+            {TILES.map((i) => (
+              <span key={i} className="tile" />
+            ))}
+          </div>
+        ))}
       </div>
       <div className={`glow-floor ${isLoaded ? 'loaded' : ''}`}></div>
     </div>

@@ -3,7 +3,7 @@
   min-height: 100vh;
   width: 100%;
   padding: 100px 64px 120px;
-  background: #0a0203;
+  background: #050b18;
   overflow: hidden;
   opacity: 0;
   transform: translateY(30px);
@@ -216,7 +216,7 @@ html:not(.dark) .how-description {
 
 /* Step Content */
 .step-content {
-  background: rgba(15, 3, 5, 0.4);
+  background: rgba(9, 18, 38, 0.4);
   border: 1px solid rgba(255, 60, 70, 0.2);
   border-radius: 12px;
   padding: 32px 28px;

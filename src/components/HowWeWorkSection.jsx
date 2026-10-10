@@ -205,7 +205,7 @@ const HowWeWorkSection = () => {
                     <svg viewBox="0 0 120 100" className="step-visual-svg">
                       {/* System status */}
                       <g>
-                        <rect x="10" y="10" width="100" height="70" fill="rgba(15, 3, 5, 0.9)" stroke="rgba(255, 60, 70, 0.4)" strokeWidth="1"/>
+                        <rect x="10" y="10" width="100" height="70" fill="rgba(9, 18, 38, 0.9)" stroke="rgba(255, 60, 70, 0.4)" strokeWidth="1"/>
                         <rect x="10" y="10" width="100" height="20" fill="rgba(25, 6, 10, 0.95)" stroke="rgba(255, 60, 70, 0.3)" strokeWidth="0.5"/>
                         <text x="20" y="24" fill="rgba(255, 80, 90, 0.8)" fontSize="10" fontFamily="monospace" fontWeight="600">SYSTEM</text>
                         <text x="20" y="42" fill="rgba(255, 100, 110, 0.7)" fontSize="8" fontFamily="monospace">STATUS:</text>
