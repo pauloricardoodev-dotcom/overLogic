@@ -3,8 +3,8 @@
   min-height: 100vh;
   width: 100%;
   padding: 120px 64px 140px;
-  /* Topo começa na cor de How We Work e funde para o vermelho */
-  background: linear-gradient(180deg, #050b18 0, #0a0203 280px);
+  /* Fundo vem do TechBackground */
+  background: transparent;
   overflow: hidden;
 }
 
@@ -49,7 +49,7 @@ html:not(.dark) .differentials-section {
 }
 
 .differentials-label {
-  color: #00dcff;
+  color: #e6172c;
   font-family: 'Courier New', monospace;
   font-size: 12px;
   letter-spacing: 2.5px;
@@ -87,7 +87,7 @@ html:not(.dark) .differentials-title {
 }
 
 .differentials-title .accent {
-  color: #00dcff;
+  color: #e6172c;
 }
 
 .differentials-description {
@@ -148,7 +148,7 @@ html:not(.dark) .differentials-description {
   left: 0;
   width: calc(50% - 200px);
   height: 1px;
-  background: linear-gradient(90deg, rgba(0, 220, 255, 0.6), rgba(0, 220, 255, 0.2));
+  background: linear-gradient(90deg, rgba(230, 23, 44, 0.6), rgba(230, 23, 44, 0.2));
 }
 
 .connection-line.top-right {
@@ -156,7 +156,7 @@ html:not(.dark) .differentials-description {
   right: 0;
   width: calc(50% - 200px);
   height: 1px;
-  background: linear-gradient(270deg, rgba(0, 220, 255, 0.6), rgba(0, 220, 255, 0.2));
+  background: linear-gradient(270deg, rgba(230, 23, 44, 0.6), rgba(230, 23, 44, 0.2));
 }
 
 .connection-line.bottom-left {
@@ -164,7 +164,7 @@ html:not(.dark) .differentials-description {
   left: 0;
   width: calc(50% - 200px);
   height: 1px;
-  background: linear-gradient(90deg, rgba(0, 220, 255, 0.6), rgba(0, 220, 255, 0.2));
+  background: linear-gradient(90deg, rgba(230, 23, 44, 0.6), rgba(230, 23, 44, 0.2));
 }
 
 .connection-line.bottom-right {
@@ -172,14 +172,14 @@ html:not(.dark) .differentials-description {
   right: 0;
   width: calc(50% - 200px);
   height: 1px;
-  background: linear-gradient(270deg, rgba(0, 220, 255, 0.6), rgba(0, 220, 255, 0.2));
+  background: linear-gradient(270deg, rgba(230, 23, 44, 0.6), rgba(230, 23, 44, 0.2));
 }
 
 .connection-point {
   position: absolute;
   width: 6px;
   height: 6px;
-  background: rgba(0, 220, 255, 0.5);
+  background: rgba(230, 23, 44, 0.5);
   border-radius: 50%;
   transition: background 0.3s ease-out, box-shadow 0.3s ease-out;
 }
@@ -205,8 +205,8 @@ html:not(.dark) .differentials-description {
 }
 
 .connection-line.active .connection-point {
-  background: rgba(0, 220, 255, 0.9);
-  box-shadow: 0 0 10px rgba(0, 220, 255, 0.6);
+  background: rgba(230, 23, 44, 0.9);
+  box-shadow: 0 0 10px rgba(230, 23, 44, 0.6);
 }
 
 /* Central Core */
@@ -292,9 +292,11 @@ html:not(.dark) .differentials-description {
 .core-logo {
   position: relative;
   z-index: 10;
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 800;
   letter-spacing: -0.5px;
+  line-height: 1.1;
+  text-align: center;
   opacity: 0;
   transform: scale(0.8);
   transition: opacity 0.6s ease-out 0.4s, transform 0.6s ease-out 0.4s;
@@ -303,6 +305,11 @@ html:not(.dark) .differentials-description {
 .core-logo.visible {
   opacity: 1;
   transform: scale(1);
+}
+
+.core-over,
+.core-logic {
+  display: block;
 }
 
 .core-over {
@@ -314,7 +321,7 @@ html:not(.dark) .core-over {
 }
 
 .core-logic {
-  color: #00dcff;
+  color: #e6172c;
 }
 
 /* Differentials Grid */
@@ -327,7 +334,7 @@ html:not(.dark) .core-over {
 .differential-item {
   position: absolute;
   background: rgba(15, 3, 5, 0.3);
-  border: 1px solid rgba(0, 220, 255, 0.15);
+  border: 1px solid rgba(230, 23, 44, 0.15);
   border-radius: 12px;
   padding: 28px;
   width: 280px;
@@ -344,7 +351,7 @@ html:not(.dark) .core-over {
 
 html:not(.dark) .differential-item {
   background: rgba(255, 255, 255, 0.8);
-  border-color: rgba(0, 220, 255, 0.1);
+  border-color: rgba(230, 23, 44, 0.1);
 }
 
 .differential-item.visible {
@@ -353,8 +360,8 @@ html:not(.dark) .differential-item {
 }
 
 .differential-item.active {
-  border-color: rgba(0, 220, 255, 0.4);
-  box-shadow: 0 8px 32px rgba(0, 220, 255, 0.12);
+  border-color: rgba(230, 23, 44, 0.4);
+  box-shadow: 0 8px 32px rgba(230, 23, 44, 0.12);
   transform: translateY(-4px) translateX(4px);
 }
 
@@ -403,7 +410,7 @@ html:not(.dark) .differential-item {
 }
 
 .differential-number {
-  color: rgba(0, 220, 255, 0.6);
+  color: rgba(230, 23, 44, 0.6);
   font-family: 'Courier New', monospace;
   font-size: 12px;
   font-weight: 600;
@@ -461,7 +468,7 @@ html:not(.dark) .closing-text {
 }
 
 .closing-text .accent {
-  color: #00dcff;
+  color: #e6172c;
 }
 
 .closing-tags {
@@ -472,12 +479,12 @@ html:not(.dark) .closing-text {
   font-family: 'Courier New', monospace;
   font-size: 11px;
   letter-spacing: 3px;
-  color: rgba(0, 220, 255, 0.7);
+  color: rgba(230, 23, 44, 0.7);
   font-weight: 600;
 }
 
 .closing-tags .separator {
-  color: rgba(0, 220, 255, 0.4);
+  color: rgba(230, 23, 44, 0.4);
 }
 
 /* Animations */

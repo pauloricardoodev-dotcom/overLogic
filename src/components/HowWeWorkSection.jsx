@@ -49,27 +49,27 @@ const HowWeWorkSection = () => {
   const steps = [
     {
       number: '01',
-      title: 'Primeiro, entendemos o problema.',
-      description: 'Antes de escrever uma linha de código, entendemos sua necessidade, seus objetivos e o que realmente precisa ser resolvido.',
-      label: 'ENTENDEMOS'
+      title: 'Primeiro, entendo o problema.',
+      description: 'Antes de escrever uma linha de código, entendo sua necessidade, seus objetivos e o que realmente precisa ser resolvido.',
+      label: 'ENTENDO'
     },
     {
       number: '02',
-      title: 'Transformamos necessidades em um plano.',
-      description: 'Definimos funcionalidades, estrutura, tecnologia e prioridades para construir uma solução clara e eficiente.',
-      label: 'PLANEJAMOS'
+      title: 'Transformo necessidades em um plano.',
+      description: 'Defino funcionalidades, estrutura, tecnologia e prioridades para construir uma solução clara e eficiente.',
+      label: 'PLANEJO'
     },
     {
       number: '03',
       title: 'É aqui que a ideia ganha forma.',
-      description: 'Desenvolvemos a solução com foco em performance, experiência e qualidade, mantendo você próximo de cada etapa.',
-      label: 'DESENVOLVEMOS'
+      description: 'Desenvolvo a solução com foco em performance, experiência e qualidade, mantendo você próximo de cada etapa.',
+      label: 'DESENVOLVO'
     },
     {
       number: '04',
       title: 'Pronto para sair do papel.',
-      description: 'Entregamos a solução funcionando e preparada para fazer parte do dia a dia do seu negócio.',
-      label: 'ENTREGAMOS'
+      description: 'Entrego a solução funcionando e preparada para fazer parte do dia a dia do seu negócio.',
+      label: 'ENTREGO'
     }
   ];
 
@@ -102,7 +102,7 @@ const HowWeWorkSection = () => {
       <div className="how-container">
         {/* Header */}
         <div className="how-header">
-          <div className="how-label">COMO TRABALHAMOS</div>
+          <div className="how-label">COMO EU TRABALHO</div>
           <h2 className="how-title">
             Da ideia ao produto.
           </h2>
@@ -144,16 +144,16 @@ const HowWeWorkSection = () => {
                     <svg viewBox="0 0 120 100" className="step-visual-svg">
                       {/* Analysis blocks */}
                       <g>
-                        <rect x="10" y="20" width="25" height="25" fill="rgba(255, 40, 50, 0.15)" stroke="rgba(255, 60, 70, 0.4)" strokeWidth="1"/>
-                        <rect x="40" y="20" width="25" height="25" fill="rgba(255, 40, 50, 0.1)" stroke="rgba(255, 60, 70, 0.3)" strokeWidth="1"/>
-                        <rect x="70" y="20" width="25" height="25" fill="rgba(255, 40, 50, 0.08)" stroke="rgba(255, 60, 70, 0.25)" strokeWidth="1"/>
-                        <rect x="25" y="50" width="25" height="25" fill="rgba(255, 40, 50, 0.12)" stroke="rgba(255, 60, 70, 0.35)" strokeWidth="1"/>
-                        <rect x="55" y="50" width="25" height="25" fill="rgba(255, 40, 50, 0.08)" stroke="rgba(255, 60, 70, 0.25)" strokeWidth="1"/>
+                        <rect x="10" y="20" width="25" height="25" fill="rgba(255, 40, 50, 0.15)" stroke="rgba(230, 23, 44, 0.4)" strokeWidth="1"/>
+                        <rect x="40" y="20" width="25" height="25" fill="rgba(255, 40, 50, 0.1)" stroke="rgba(230, 23, 44, 0.3)" strokeWidth="1"/>
+                        <rect x="70" y="20" width="25" height="25" fill="rgba(255, 40, 50, 0.08)" stroke="rgba(230, 23, 44, 0.25)" strokeWidth="1"/>
+                        <rect x="25" y="50" width="25" height="25" fill="rgba(255, 40, 50, 0.12)" stroke="rgba(230, 23, 44, 0.35)" strokeWidth="1"/>
+                        <rect x="55" y="50" width="25" height="25" fill="rgba(255, 40, 50, 0.08)" stroke="rgba(230, 23, 44, 0.25)" strokeWidth="1"/>
                         {/* Connection lines */}
-                        <line x1="22.5" y1="45" x2="22.5" y2="50" stroke="rgba(255, 80, 90, 0.3)" strokeWidth="1"/>
-                        <line x1="52.5" y1="45" x2="52.5" y2="50" stroke="rgba(255, 80, 90, 0.3)" strokeWidth="1"/>
-                        <line x1="35" y1="32.5" x2="40" y2="32.5" stroke="rgba(255, 80, 90, 0.3)" strokeWidth="1"/>
-                        <line x1="65" y1="32.5" x2="70" y2="32.5" stroke="rgba(255, 80, 90, 0.3)" strokeWidth="1"/>
+                        <line x1="22.5" y1="45" x2="22.5" y2="50" stroke="rgba(230, 23, 44, 0.3)" strokeWidth="1"/>
+                        <line x1="52.5" y1="45" x2="52.5" y2="50" stroke="rgba(230, 23, 44, 0.3)" strokeWidth="1"/>
+                        <line x1="35" y1="32.5" x2="40" y2="32.5" stroke="rgba(230, 23, 44, 0.3)" strokeWidth="1"/>
+                        <line x1="65" y1="32.5" x2="70" y2="32.5" stroke="rgba(230, 23, 44, 0.3)" strokeWidth="1"/>
                       </g>
                     </svg>
                   )}
@@ -162,8 +162,8 @@ const HowWeWorkSection = () => {
                     <svg viewBox="0 0 120 100" className="step-visual-svg">
                       {/* Wireframe representation */}
                       <g>
-                        <rect x="10" y="10" width="100" height="60" fill="rgba(20, 5, 8, 0.8)" stroke="rgba(255, 60, 70, 0.4)" strokeWidth="1"/>
-                        <rect x="10" y="10" width="100" height="15" fill="rgba(30, 8, 12, 0.9)" stroke="rgba(255, 60, 70, 0.3)" strokeWidth="0.5"/>
+                        <rect x="10" y="10" width="100" height="60" fill="rgba(20, 5, 8, 0.8)" stroke="rgba(230, 23, 44, 0.4)" strokeWidth="1"/>
+                        <rect x="10" y="10" width="100" height="15" fill="rgba(30, 8, 12, 0.9)" stroke="rgba(230, 23, 44, 0.3)" strokeWidth="0.5"/>
                         <circle cx="20" cy="17.5" r="3" fill="rgba(255, 50, 60, 0.7)"/>
                         <circle cx="30" cy="17.5" r="3" fill="rgba(255, 70, 80, 0.4)"/>
                         {/* Content blocks */}
@@ -180,24 +180,24 @@ const HowWeWorkSection = () => {
                       {/* Development/building interface */}
                       <g>
                         {/* Main window */}
-                        <rect x="5" y="5" width="110" height="70" fill="rgba(20, 5, 8, 0.9)" stroke="rgba(255, 80, 90, 0.5)" strokeWidth="1"/>
-                        <rect x="5" y="5" width="110" height="18" fill="rgba(40, 10, 15, 0.95)" stroke="rgba(255, 80, 90, 0.4)" strokeWidth="0.5"/>
-                        <circle cx="15" cy="14" r="3.5" fill="rgba(255, 60, 70, 0.8)"/>
-                        <circle cx="28" cy="14" r="3.5" fill="rgba(255, 80, 90, 0.5)"/>
+                        <rect x="5" y="5" width="110" height="70" fill="rgba(20, 5, 8, 0.9)" stroke="rgba(230, 23, 44, 0.5)" strokeWidth="1"/>
+                        <rect x="5" y="5" width="110" height="18" fill="rgba(40, 10, 15, 0.95)" stroke="rgba(230, 23, 44, 0.4)" strokeWidth="0.5"/>
+                        <circle cx="15" cy="14" r="3.5" fill="rgba(230, 23, 44, 0.8)"/>
+                        <circle cx="28" cy="14" r="3.5" fill="rgba(230, 23, 44, 0.5)"/>
                         <circle cx="41" cy="14" r="3.5" fill="rgba(255, 100, 110, 0.3)"/>
                         {/* Code blocks */}
                         <rect x="12" y="30" width="25" height="4" fill="rgba(255, 40, 50, 0.2)" rx="0.5"/>
                         <rect x="12" y="38" width="35" height="4" fill="rgba(255, 40, 50, 0.15)" rx="0.5"/>
                         <rect x="12" y="46" width="28" height="4" fill="rgba(255, 40, 50, 0.12)" rx="0.5"/>
-                        <rect x="45" y="30" width="60" height="35" fill="rgba(255, 40, 50, 0.08)" stroke="rgba(255, 60, 70, 0.25)" strokeWidth="0.5" rx="2"/>
+                        <rect x="45" y="30" width="60" height="35" fill="rgba(255, 40, 50, 0.08)" stroke="rgba(230, 23, 44, 0.25)" strokeWidth="0.5" rx="2"/>
                         {/* Building elements */}
                         <rect x="50" y="38" width="20" height="4" fill="rgba(255, 50, 60, 0.3)" rx="0.5"/>
                         <rect x="50" y="46" width="15" height="4" fill="rgba(255, 50, 60, 0.25)" rx="0.5"/>
                         <rect x="50" y="54" width="25" height="4" fill="rgba(255, 50, 60, 0.2)" rx="0.5"/>
                         {/* Particles */}
-                        <circle cx="85" cy="40" r="2" fill="rgba(255, 80, 90, 0.6)"/>
-                        <circle cx="92" cy="48" r="1.5" fill="rgba(255, 80, 90, 0.5)"/>
-                        <circle cx="80" cy="55" r="1.5" fill="rgba(255, 80, 90, 0.4)"/>
+                        <circle cx="85" cy="40" r="2" fill="rgba(230, 23, 44, 0.6)"/>
+                        <circle cx="92" cy="48" r="1.5" fill="rgba(230, 23, 44, 0.5)"/>
+                        <circle cx="80" cy="55" r="1.5" fill="rgba(230, 23, 44, 0.4)"/>
                       </g>
                     </svg>
                   )}
@@ -206,16 +206,16 @@ const HowWeWorkSection = () => {
                     <svg viewBox="0 0 120 100" className="step-visual-svg">
                       {/* System status */}
                       <g>
-                        <rect x="10" y="10" width="100" height="70" fill="rgba(9, 18, 38, 0.9)" stroke="rgba(255, 60, 70, 0.4)" strokeWidth="1"/>
-                        <rect x="10" y="10" width="100" height="20" fill="rgba(25, 6, 10, 0.95)" stroke="rgba(255, 60, 70, 0.3)" strokeWidth="0.5"/>
-                        <text x="20" y="24" fill="rgba(255, 80, 90, 0.8)" fontSize="10" fontFamily="monospace" fontWeight="600">SYSTEM</text>
+                        <rect x="10" y="10" width="100" height="70" fill="rgba(10, 10, 10, 0.9)" stroke="rgba(230, 23, 44, 0.4)" strokeWidth="1"/>
+                        <rect x="10" y="10" width="100" height="20" fill="rgba(25, 6, 10, 0.95)" stroke="rgba(230, 23, 44, 0.3)" strokeWidth="0.5"/>
+                        <text x="20" y="24" fill="rgba(230, 23, 44, 0.8)" fontSize="10" fontFamily="monospace" fontWeight="600">SYSTEM</text>
                         <text x="20" y="42" fill="rgba(255, 100, 110, 0.7)" fontSize="8" fontFamily="monospace">STATUS:</text>
                         <text x="55" y="42" fill="#4ade80" fontSize="8" fontFamily="monospace" fontWeight="600">ONLINE</text>
                         {/* Progress bar */}
-                        <rect x="20" y="52" width="80" height="8" fill="rgba(20, 5, 8, 0.8)" stroke="rgba(255, 60, 70, 0.3)" strokeWidth="0.5" rx="1"/>
+                        <rect x="20" y="52" width="80" height="8" fill="rgba(20, 5, 8, 0.8)" stroke="rgba(230, 23, 44, 0.3)" strokeWidth="0.5" rx="1"/>
                         <rect x="20" y="52" width="80" height="8" fill="rgba(255, 40, 50, 0.6)" rx="1"/>
                         {/* Ready indicator */}
-                        <text x="45" y="72" fill={animationPhase >= 7 ? '#4ade80' : 'rgba(255, 80, 90, 0.5)'} fontSize="9" fontFamily="monospace" fontWeight="600" className={`ready-text ${animationPhase >= 7 ? 'ready' : ''}`}>READY</text>
+                        <text x="45" y="72" fill={animationPhase >= 7 ? '#4ade80' : 'rgba(230, 23, 44, 0.5)'} fontSize="9" fontFamily="monospace" fontWeight="600" className={`ready-text ${animationPhase >= 7 ? 'ready' : ''}`}>READY</text>
                       </g>
                     </svg>
                   )}
@@ -231,7 +231,7 @@ const HowWeWorkSection = () => {
         {/* Closing Statement */}
         <div className={`closing-statement ${animationPhase >= 7 ? 'visible' : ''}`}>
           <h3 className="closing-text">
-            Você traz a <span className="accent">ideia</span>. Nós cuidamos do resto.
+            Você traz a <span className="accent">ideia</span>. Eu cuido do resto.
           </h3>
         </div>
       </div>

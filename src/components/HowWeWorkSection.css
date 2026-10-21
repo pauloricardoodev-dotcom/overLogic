@@ -3,8 +3,8 @@
   min-height: 100vh;
   width: 100%;
   padding: 140px 64px 160px;
-  /* Topo começa na cor de Services e funde para o azul */
-  background: linear-gradient(180deg, #0a0203 0, #050b18 280px);
+  /* Fundo vem do TechBackground */
+  background: transparent;
   overflow: hidden;
 }
 
@@ -122,16 +122,16 @@ html:not(.dark) .how-description {
   left: 0;
   right: 0;
   height: 2px;
-  background: rgba(255, 60, 70, 0.15);
+  background: rgba(230, 23, 44, 0.15);
   z-index: 1;
 }
 
 .timeline-progress {
   height: 100%;
-  background: linear-gradient(90deg, rgba(255, 60, 70, 0.8), rgba(255, 80, 90, 0.6));
+  background: linear-gradient(90deg, rgba(230, 23, 44, 0.8), rgba(230, 23, 44, 0.6));
   width: 0%;
   transition: width 1.8s ease-out;
-  box-shadow: 0 0 10px rgba(255, 60, 70, 0.4);
+  box-shadow: 0 0 10px rgba(230, 23, 44, 0.4);
 }
 
 .timeline-line.active .timeline-progress {
@@ -179,8 +179,8 @@ html:not(.dark) .how-description {
 .point-inner {
   position: absolute;
   inset: 0;
-  background: rgba(255, 60, 70, 0.3);
-  border: 2px solid rgba(255, 80, 90, 0.5);
+  background: rgba(230, 23, 44, 0.3);
+  border: 2px solid rgba(230, 23, 44, 0.5);
   border-radius: 50%;
   transition: 
     background 0.3s ease-out,
@@ -189,21 +189,21 @@ html:not(.dark) .how-description {
 }
 
 .step-point.lit .point-inner {
-  background: rgba(255, 60, 70, 0.8);
-  border-color: rgba(255, 80, 90, 0.9);
-  box-shadow: 0 0 15px rgba(255, 60, 70, 0.6);
+  background: rgba(230, 23, 44, 0.8);
+  border-color: rgba(230, 23, 44, 0.9);
+  box-shadow: 0 0 15px rgba(230, 23, 44, 0.6);
 }
 
 .process-step:hover .point-inner {
-  background: rgba(255, 60, 70, 0.9);
-  border-color: rgba(255, 80, 90, 1);
-  box-shadow: 0 0 20px rgba(255, 60, 70, 0.8);
+  background: rgba(230, 23, 44, 0.9);
+  border-color: rgba(230, 23, 44, 1);
+  box-shadow: 0 0 20px rgba(230, 23, 44, 0.8);
 }
 
 .point-glow {
   position: absolute;
   inset: -8px;
-  background: radial-gradient(circle, rgba(255, 60, 70, 0.4) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(230, 23, 44, 0.4) 0%, transparent 70%);
   border-radius: 50%;
   opacity: 0;
   transition: opacity 0.3s ease-out;
@@ -219,8 +219,8 @@ html:not(.dark) .how-description {
 
 /* Step Content */
 .step-content {
-  background: rgba(9, 18, 38, 0.4);
-  border: 1px solid rgba(255, 60, 70, 0.2);
+  background: rgba(10, 10, 10, 0.4);
+  border: 1px solid rgba(230, 23, 44, 0.2);
   border-radius: 12px;
   padding: 32px 28px;
   width: 280px;
@@ -240,13 +240,13 @@ html:not(.dark) .step-content {
 }
 
 .process-step:hover .step-content {
-  border-color: rgba(255, 60, 70, 0.4);
+  border-color: rgba(230, 23, 44, 0.4);
   box-shadow: 0 8px 32px rgba(230, 23, 44, 0.12);
   transform: translateY(-4px);
 }
 
 .step-number {
-  color: rgba(255, 80, 90, 0.6);
+  color: rgba(230, 23, 44, 0.6);
   font-family: 'Courier New', monospace;
   font-size: 12px;
   font-weight: 600;
@@ -303,7 +303,7 @@ html:not(.dark) .step-description {
 /* Step Label */
 .step-label {
   margin-top: 24px;
-  color: rgba(255, 80, 90, 0.5);
+  color: rgba(230, 23, 44, 0.5);
   font-family: 'Courier New', monospace;
   font-size: 11px;
   font-weight: 600;
@@ -312,7 +312,7 @@ html:not(.dark) .step-description {
 }
 
 .process-step:hover .step-label {
-  color: rgba(255, 80, 90, 0.8);
+  color: rgba(230, 23, 44, 0.8);
 }
 
 /* Closing Statement */
@@ -353,7 +353,7 @@ html:not(.dark) .closing-text {
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(255, 60, 70, 0.6), transparent);
+  background: linear-gradient(90deg, transparent, rgba(230, 23, 44, 0.6), transparent);
   opacity: 0.6;
 }
 
@@ -485,13 +485,13 @@ html:not(.dark) .closing-text {
     right: auto;
     width: 2px;
     height: calc(100% - 24px);
-    background: rgba(255, 60, 70, 0.15);
+    background: rgba(230, 23, 44, 0.15);
   }
   
   .timeline-progress {
     width: 100% !important;
     height: 0%;
-    background: linear-gradient(180deg, rgba(255, 60, 70, 0.8), rgba(255, 80, 90, 0.6));
+    background: linear-gradient(180deg, rgba(230, 23, 44, 0.8), rgba(230, 23, 44, 0.6));
     transition: height 1.8s ease-out;
   }
   

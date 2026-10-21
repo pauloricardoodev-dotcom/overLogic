@@ -3,8 +3,8 @@
   min-height: 100vh;
   width: 100%;
   padding: 100px 64px 140px;
-  /* Topo começa na cor do Hero e funde para o vermelho */
-  background: linear-gradient(180deg, #00030a 0, #0a0203 280px);
+  /* Fundo vem do TechBackground */
+  background: transparent;
   overflow: hidden;
 }
 
@@ -49,7 +49,7 @@ html:not(.dark) .services-section {
 }
 
 .services-label {
-  color: #00dcff;
+  color: #e6172c;
   font-family: 'Courier New', monospace;
   font-size: 12px;
   letter-spacing: 2.5px;
@@ -87,7 +87,7 @@ html:not(.dark) .services-title {
 }
 
 .services-title .accent {
-  color: #00dcff;
+  color: #e6172c;
 }
 
 .services-description {
@@ -120,7 +120,7 @@ html:not(.dark) .services-description {
 .service-card {
   position: relative;
   background: rgba(15, 3, 5, 0.6);
-  border: 1px solid rgba(0, 220, 255, 0.25);
+  border: 1px solid rgba(230, 23, 44, 0.25);
   border-radius: 12px;
   padding: 40px;
   display: flex;
@@ -141,7 +141,7 @@ html:not(.dark) .services-description {
 
 html:not(.dark) .service-card {
   background: rgba(255, 255, 255, 0.8);
-  border-color: rgba(0, 220, 255, 0.15);
+  border-color: rgba(230, 23, 44, 0.15);
 }
 
 .services-section.visible .service-card {
@@ -151,10 +151,10 @@ html:not(.dark) .service-card {
 
 .service-card:hover {
   transform: scale(1.015) translateY(-2px);
-  border-color: rgba(0, 220, 255, 0.5);
+  border-color: rgba(230, 23, 44, 0.5);
   box-shadow: 
-    0 8px 32px rgba(0, 220, 255, 0.15),
-    0 0 60px rgba(0, 220, 255, 0.1);
+    0 8px 32px rgba(230, 23, 44, 0.15),
+    0 0 60px rgba(230, 23, 44, 0.1);
 }
 
 .service-card::after {
@@ -164,7 +164,7 @@ html:not(.dark) .service-card {
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(0, 220, 255, 0.6), transparent);
+  background: linear-gradient(90deg, transparent, rgba(230, 23, 44, 0.6), transparent);
   opacity: 0;
   transition: opacity 0.3s ease-out;
 }
@@ -179,7 +179,7 @@ html:not(.dark) .service-card {
 }
 
 .service-number {
-  color: rgba(0, 220, 255, 0.6);
+  color: rgba(230, 23, 44, 0.6);
   font-family: 'Courier New', monospace;
   font-size: 13px;
   font-weight: 600;
@@ -220,16 +220,16 @@ html:not(.dark) .service-description {
 
 .service-tag {
   font-size: 12px;
-  color: rgba(0, 220, 255, 0.8);
-  background: rgba(0, 220, 255, 0.08);
+  color: rgba(230, 23, 44, 0.8);
+  background: rgba(230, 23, 44, 0.08);
   padding: 6px 12px;
   border-radius: 4px;
-  border: 1px solid rgba(0, 220, 255, 0.2);
+  border: 1px solid rgba(230, 23, 44, 0.2);
   font-weight: 500;
 }
 
 .service-cta {
-  color: #00dcff;
+  color: #e6172c;
   font-size: 14px;
   font-weight: 600;
   display: flex;

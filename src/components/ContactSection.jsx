@@ -140,7 +140,7 @@ const ContactSection = () => {
             Vamos construir algo <span className="accent">incrível</span> juntos?
           </h2>
           <p className="contact-description">
-            Tem um projeto em mente? Entre em contato e vamos conversar sobre como podemos ajudar.
+            Tem um projeto em mente? Entre em contato e vamos conversar sobre como posso ajudar.
           </p>
         </div>
 
@@ -184,7 +184,7 @@ const ContactSection = () => {
                   onChange={handleInputChange}
                   required
                   rows="5"
-                  placeholder="Conte-nos sobre seu projeto..."
+                  placeholder="Conte-me sobre seu projeto..."
                 />
               </div>
               
@@ -286,7 +286,7 @@ const ContactSection = () => {
             <span className="footer-logic">Logic</span>
           </div>
           <div className="footer-text">
-            © 2024 overLogic. Todos os direitos reservados.
+            © 2026 Paulo Rinaldi. Todos os direitos reservados.
           </div>
         </div>
       </div>

@@ -7,8 +7,8 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  /* Início da página: nasce do preto puro */
-  background: linear-gradient(180deg, #000 0, #00030a 320px);
+  /* Fundo fica por conta do TechBackground (fixo atrás de tudo) */
+  background: transparent;
   opacity: 0;
   transition: opacity 0.8s ease-out, background-color 0.3s ease;
 }
@@ -150,12 +150,12 @@ html:not(.dark) .theme-toggle:hover {
 
 /* CUBE */
 .cube-wrap {
+  --s: 250px;
+  --u: calc(var(--s) / 3);
   position: relative;
-  height: 600px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  perspective: 1400px;
+  height: 520px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
   opacity: 0;
   transform: scale(0.82) translateY(24px);
   filter: blur(8px);
@@ -171,63 +171,97 @@ html:not(.dark) .theme-toggle:hover {
   filter: none;
 }
 
+.holo {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: calc(var(--s) * 0.25);
+  perspective: 1400px;
+  animation: holo-flicker 7s infinite;
+}
+
+/* Gira pro mouse (o JS escreve o transform) */
+.cube-rig {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
 .cube {
-  --s: 357px;
   position: relative;
   width: var(--s);
   height: var(--s);
   transform-style: preserve-3d;
-  will-change: transform;
+  animation: cube-float 6s ease-in-out infinite;
   /* Sem opacity aqui: opacity < 1 achata o preserve-3d. O fade fica no .cube-wrap */
 }
 
-.face {
-  --c: 255, 255, 255;
-  position: absolute;
-  width: var(--s);
-  height: var(--s);
-  display: grid;
-  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
-  gap: calc(var(--s) * 0.025);
-  padding: calc(var(--s) * 0.025);
-  background: #020203;
-  border-radius: calc(var(--s) * 0.04);
-  backface-visibility: hidden;
-  box-shadow: 0 0 calc(var(--s) * 0.12) rgba(var(--c), 0.18);
+@keyframes cube-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
 }
 
-.tile {
-  border: calc(var(--s) * 0.014 + 1px) solid rgba(var(--c), 0.95);
+/* Cada cubinho (o JS escreve o transform: posição + orientação) */
+.cubie {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--u);
+  height: var(--u);
+  margin: calc(var(--u) / -2) 0 0 calc(var(--u) / -2);
+  transform-style: preserve-3d;
+}
+
+.cface {
+  position: absolute;
+  inset: calc(var(--s) * 0.0125);
+  border-radius: calc(var(--s) * 0.03);
+  background: #050506;
+  border: 1px solid rgba(150, 150, 158, 0.1);
+  backface-visibility: hidden;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Só as faces voltadas pra fora têm adesivo colorido */
+.cface.sticker {
+  border: calc(var(--s) * 0.014 + 1px) solid rgba(var(--k), 0.95);
   border-radius: calc(var(--s) * 0.04);
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.14) 0%, transparent 28%),
-    radial-gradient(circle at 50% 50%, #0b0b0e 0%, #030304 100%);
+    radial-gradient(circle at 50% 50%, #0b0b0b 0%, #030303 100%);
   box-shadow:
-    0 0 calc(var(--s) * 0.025) rgba(var(--c), 0.65),
-    inset 0 0 calc(var(--s) * 0.03) rgba(var(--c), 0.35);
+    0 0 calc(var(--s) * 0.025) rgba(var(--k), 0.65),
+    inset 0 0 calc(var(--s) * 0.03) rgba(var(--k), 0.35);
 }
 
-.face.top,
-.face.bottom {
-  --c: 245, 248, 255;
+.cface.sticker.top,
+.cface.sticker.bottom {
+  --k: 245, 245, 245;
 }
 
-.face.front,
-.face.back {
-  --c: 230, 23, 44;
+.cface.sticker.front,
+.cface.sticker.back {
+  --k: 230, 23, 44;
 }
 
-.face.right,
-.face.left {
-  --c: 0, 220, 255;
+.cface.sticker.right,
+.cface.sticker.left {
+  --k: 150, 150, 158;
 }
 
-.face.top { transform: rotateX(90deg) translateZ(calc(var(--s) / 2)); }
-.face.front { transform: translateZ(calc(var(--s) / 2)); }
-.face.right { transform: rotateY(90deg) translateZ(calc(var(--s) / 2)); }
-.face.bottom { transform: rotateX(-90deg) translateZ(calc(var(--s) / 2)); }
-.face.back { transform: rotateY(180deg) translateZ(calc(var(--s) / 2)); }
-.face.left { transform: rotateY(-90deg) translateZ(calc(var(--s) / 2)); }
+/* Cubo aberto: o corte das peças acende em vermelho */
+.holo.open .cface:not(.sticker) {
+  border-color: rgba(230, 23, 44, 0.55);
+  box-shadow: inset 0 0 10px rgba(230, 23, 44, 0.4);
+}
+
+.holo.open .cface.sticker {
+  box-shadow:
+    0 0 calc(var(--s) * 0.05) rgba(var(--k), 0.9),
+    inset 0 0 calc(var(--s) * 0.04) rgba(var(--k), 0.5);
+}
 
 /* TEXT SIDE */
 .text-side {
@@ -345,42 +379,8 @@ html:not(.dark) .play-circle {
   }
 
   .cube-wrap {
-    height: 340px;
+    height: 320px;
     order: 1;
-  }
-
-  .cube {
-    width: 220px;
-    height: 220px;
-  }
-
-  .face {
-    width: 220px;
-    height: 220px;
-  }
-
-  .face.top {
-    transform: rotateX(90deg) translateZ(110px);
-  }
-
-  .face.front {
-    transform: translateZ(110px);
-  }
-
-  .face.right {
-    transform: rotateY(90deg) translateZ(110px);
-  }
-
-  .face.bottom {
-    transform: rotateX(-90deg) translateZ(110px);
-  }
-
-  .face.back {
-    transform: rotateY(180deg) translateZ(110px);
-  }
-
-  .face.left {
-    transform: rotateY(-90deg) translateZ(110px);
   }
 
   h1 {
@@ -392,8 +392,8 @@ html:not(.dark) .play-circle {
     padding-right: 0;
   }
 
-  .cube {
-    --s: 224px;
+  .cube-wrap {
+    --s: 170px;
   }
 }
 
@@ -403,6 +403,9 @@ html:not(.dark) .play-circle {
   nav,
   .cube-wrap,
   .cube,
+  .core-cube,
+  .core-ring,
+  .holo,
   .text-side {
     transition: none;
     animation: none;
@@ -420,4 +423,330 @@ html:not(.dark) .play-circle {
 
 .nav-links li:not(.active) a:hover {
   color: #e6172c;
+}
+
+/* HOLOGRAMA: scanlines, base projetora e glitch no clique */
+.holo-scan {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.06) 0 1px,
+    transparent 1px 4px
+  );
+  -webkit-mask-image: radial-gradient(closest-side, #000 55%, transparent 100%);
+  mask-image: radial-gradient(closest-side, #000 55%, transparent 100%);
+  opacity: 0.55;
+  overflow: hidden;
+}
+
+.holo-scan::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 18%;
+  background: linear-gradient(180deg, transparent, rgba(230, 23, 44, 0.22), transparent);
+  animation: holo-sweep 4.5s linear infinite;
+}
+
+@keyframes holo-sweep {
+  from { top: -20%; }
+  to { top: 110%; }
+}
+
+.holo-base {
+  position: absolute;
+  left: 50%;
+  bottom: calc(var(--s) * 0.15);
+  width: calc(var(--s) * 1.2);
+  height: calc(var(--s) * 0.16);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.holo-base .beam {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  width: 78%;
+  height: calc(var(--s) * 0.42);
+  transform: translateX(-50%);
+  clip-path: polygon(22% 0, 78% 0, 100% 100%, 0 100%);
+  background: linear-gradient(0deg, rgba(230, 23, 44, 0.38), rgba(230, 23, 44, 0.04) 85%, transparent);
+  animation: beam-pulse 3s ease-in-out infinite;
+}
+
+.holo-base .plate {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 50% 40%, #2a2a2e 0%, #0a0a0a 70%);
+  border: 1px solid rgba(150, 150, 158, 0.55);
+  box-shadow:
+    0 0 calc(var(--s) * 0.1) rgba(230, 23, 44, 0.45),
+    0 calc(var(--s) * 0.03) 0 rgba(0, 0, 0, 0.8);
+}
+
+.holo-base .ring {
+  position: absolute;
+  inset: 18% 10%;
+  border-radius: 50%;
+  border: 1px solid rgba(230, 23, 44, 0.9);
+  box-shadow: 0 0 10px rgba(230, 23, 44, 0.7);
+}
+
+.holo-base .ring.r2 {
+  inset: 0;
+  border-color: rgba(245, 245, 245, 0.5);
+  box-shadow: none;
+  animation: ring-emit 3s ease-out infinite;
+}
+
+@keyframes ring-emit {
+  from { transform: scale(0.35); opacity: 0.9; }
+  to { transform: scale(1); opacity: 0; }
+}
+
+@keyframes beam-pulse {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+@keyframes holo-flicker {
+  0%, 91%, 95%, 100% { opacity: 1; }
+  92% { opacity: 0.8; }
+  93% { opacity: 1; }
+  94% { opacity: 0.88; }
+}
+
+.holo.glitch {
+  animation: holo-glitch 0.9s steps(1, end);
+}
+
+.holo.glitch .holo-scan {
+  opacity: 1;
+}
+
+@keyframes holo-glitch {
+  0% { transform: none; clip-path: inset(0); opacity: 1; filter: none; }
+  8% {
+    transform: translateX(-16px) skewX(6deg);
+    clip-path: inset(12% 0 60% 0);
+    filter: drop-shadow(9px 0 rgba(230, 23, 44, 0.95)) drop-shadow(-9px 0 rgba(245, 245, 245, 0.8));
+  }
+  16% {
+    transform: translateX(14px) skewX(-8deg);
+    clip-path: inset(46% 0 22% 0);
+    opacity: 0.55;
+    filter: drop-shadow(-7px 0 rgba(230, 23, 44, 0.95)) drop-shadow(7px 0 rgba(245, 245, 245, 0.8));
+  }
+  24% { transform: translateX(0); clip-path: inset(0); opacity: 1; filter: drop-shadow(4px 0 rgba(230, 23, 44, 0.8)); }
+  32% {
+    transform: translateX(-22px) skewX(4deg);
+    clip-path: inset(70% 0 6% 0);
+    filter: drop-shadow(10px 0 rgba(230, 23, 44, 0.95)) drop-shadow(-10px 0 rgba(150, 150, 158, 0.9));
+  }
+  40% { transform: translateX(8px); clip-path: inset(0 0 40% 0); opacity: 0.35; filter: none; }
+  48% { transform: translateX(0); clip-path: inset(0); opacity: 1; filter: drop-shadow(-5px 0 rgba(230, 23, 44, 0.9)); }
+  56% {
+    transform: translateX(18px) skewX(-5deg);
+    clip-path: inset(24% 0 44% 0);
+    filter: drop-shadow(8px 0 rgba(245, 245, 245, 0.8)) drop-shadow(-8px 0 rgba(230, 23, 44, 0.95));
+  }
+  66% { transform: none; clip-path: inset(0); opacity: 0.6; filter: none; }
+  74% { transform: translateX(-9px); clip-path: inset(58% 0 12% 0); opacity: 1; filter: drop-shadow(5px 0 rgba(230, 23, 44, 0.9)); }
+  84% { transform: none; clip-path: inset(0); opacity: 0.85; filter: drop-shadow(2px 0 rgba(230, 23, 44, 0.7)); }
+  100% { transform: none; clip-path: inset(0); opacity: 1; filter: none; }
+}
+
+/* Brilho/onda quando o cubo abre; --ex (0..1) é escrito pelo JS */
+.holo-glow,
+.holo-shock {
+  position: absolute;
+  left: 50%;
+  top: calc(50% - var(--s) * 0.125);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.holo-glow {
+  width: calc(var(--s) * 1.6);
+  height: calc(var(--s) * 1.6);
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(230, 23, 44, 0.5) 0, rgba(230, 23, 44, 0.14) 35%, transparent 65%);
+  opacity: calc(var(--ex, 0) * 0.9);
+}
+
+.holo-shock {
+  width: calc(var(--s) * 0.5);
+  height: calc(var(--s) * 0.5);
+  border: 2px solid rgba(230, 23, 44, 0.9);
+  box-shadow: 0 0 18px rgba(230, 23, 44, 0.7);
+  transform: translate(-50%, -50%) scale(0.2);
+  opacity: 0;
+}
+
+.holo.shock .holo-shock {
+  animation: shock 1s ease-out;
+}
+
+@keyframes shock {
+  from { opacity: 0.9; transform: translate(-50%, -50%) scale(0.2); }
+  to { opacity: 0; transform: translate(-50%, -50%) scale(2.6); }
+}
+
+/* Núcleo vermelho que aparece quando o cubo abre */
+.core {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+  display: none;
+}
+
+.core-cube {
+  --q: calc(var(--s) * 0.26);
+  position: absolute;
+  width: var(--q);
+  height: var(--q);
+  left: calc(var(--q) / -2);
+  top: calc(var(--q) / -2);
+  transform-style: preserve-3d;
+  animation: core-spin 6s linear infinite;
+}
+
+.core-cube.inner {
+  --q: calc(var(--s) * 0.12);
+  animation: core-spin 4s linear infinite reverse;
+}
+
+.core-cube i {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255, 70, 85, 0.95);
+  background:
+    repeating-linear-gradient(0deg, rgba(230, 23, 44, 0.35) 0 1px, transparent 1px 9px),
+    repeating-linear-gradient(90deg, rgba(230, 23, 44, 0.35) 0 1px, transparent 1px 9px),
+    rgba(230, 23, 44, 0.16);
+  box-shadow: inset 0 0 18px rgba(230, 23, 44, 0.7), 0 0 22px rgba(230, 23, 44, 0.55);
+  animation: core-scan 2s linear infinite;
+}
+
+.core-cube.inner i {
+  background: rgba(255, 110, 120, 0.55);
+  border-color: #f5f5f5;
+  box-shadow: 0 0 18px rgba(245, 245, 245, 0.8), inset 0 0 12px rgba(245, 245, 245, 0.8);
+  animation: none;
+}
+
+.core-cube i:nth-child(1) { transform: translateZ(calc(var(--q) / 2)); }
+.core-cube i:nth-child(2) { transform: rotateY(180deg) translateZ(calc(var(--q) / 2)); }
+.core-cube i:nth-child(3) { transform: rotateY(90deg) translateZ(calc(var(--q) / 2)); }
+.core-cube i:nth-child(4) { transform: rotateY(-90deg) translateZ(calc(var(--q) / 2)); }
+.core-cube i:nth-child(5) { transform: rotateX(90deg) translateZ(calc(var(--q) / 2)); }
+.core-cube i:nth-child(6) { transform: rotateX(-90deg) translateZ(calc(var(--q) / 2)); }
+
+.core-ring {
+  --q: calc(var(--s) * 0.5);
+  position: absolute;
+  width: var(--q);
+  height: var(--q);
+  left: calc(var(--q) / -2);
+  top: calc(var(--q) / -2);
+  border-radius: 50%;
+  border: 1px solid rgba(245, 245, 245, 0.75);
+  box-shadow: 0 0 10px rgba(230, 23, 44, 0.8);
+}
+
+.core-ring::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: calc(50% - 3px);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #f5f5f5;
+  box-shadow: 0 0 8px #e6172c, 0 0 14px #e6172c;
+}
+
+.core-ring.a { animation: ring-a 4s linear infinite; }
+
+.core-ring.b {
+  --q: calc(var(--s) * 0.62);
+  border-style: dashed;
+  border-color: rgba(230, 23, 44, 0.9);
+  animation: ring-b 6s linear infinite reverse;
+}
+
+.core-ring.c {
+  --q: calc(var(--s) * 0.4);
+  border-color: rgba(150, 150, 158, 0.8);
+  animation: ring-c 5s linear infinite;
+}
+
+@keyframes core-spin {
+  from { transform: rotateX(0) rotateY(0); }
+  to { transform: rotateX(360deg) rotateY(360deg); }
+}
+
+@keyframes core-scan {
+  to { background-position: 0 9px, 9px 0, 0 0; }
+}
+
+@keyframes ring-a {
+  from { transform: rotateX(72deg) rotateZ(0); }
+  to { transform: rotateX(72deg) rotateZ(360deg); }
+}
+
+@keyframes ring-b {
+  from { transform: rotateY(72deg) rotateZ(0); }
+  to { transform: rotateY(72deg) rotateZ(360deg); }
+}
+
+@keyframes ring-c {
+  from { transform: rotateX(40deg) rotateY(40deg) rotateZ(0); }
+  to { transform: rotateX(40deg) rotateY(40deg) rotateZ(360deg); }
+}
+
+/* Glitch aleatório (curto) que faz parte da "projeção" */
+.holo.glitch.mini {
+  animation-duration: 0.55s;
+}
+
+/* AVATAR (foto em public/paulo.jpg; sem foto mostra as iniciais) */
+.avatar {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  margin-bottom: 22px;
+  border-radius: 50%;
+  border: 2px solid #e6172c;
+  box-shadow: 0 0 0 4px rgba(230, 23, 44, 0.15), 0 0 24px rgba(230, 23, 44, 0.45);
+  overflow: hidden;
+  background: #0b0b0b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* A foto é um plano aberto: dá zoom no rosto (origem = posição da cabeça na imagem) */
+  transform: scale(7);
+  transform-origin: 44.6% 39.5%;
+}
+
+.avatar-initials {
+  font-family: 'Courier New', monospace;
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 1px;
+  color: #f5f3f2;
 }
