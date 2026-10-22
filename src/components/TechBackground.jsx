@@ -1,4 +1,5 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useSyncExternalStore } from 'react';
+import { subscribeConnection, isSlowConnection } from '../utils/connection';
 import './TechBackground.css';
 
 const LINK_DIST = 130;
@@ -21,13 +22,15 @@ const makeParticle = (w, h) => ({
 // Fundo fixo atrás do site inteiro: preto profundo, grade e partículas ligadas por linhas
 const TechBackground = () => {
   const canvasRef = useRef(null);
+  const slow = useSyncExternalStore(subscribeConnection, isSlowConnection);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext('2d');
     if (!canvas || !ctx) return undefined;
 
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // Conexão lenta recebe o mesmo tratamento de movimento reduzido (desenho estático)
+    const reduce = slow || window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let w = 0;
     let h = 0;
     let parts = [];
@@ -147,7 +150,7 @@ const TechBackground = () => {
       document.removeEventListener('mouseleave', onLeave);
       document.removeEventListener('visibilitychange', onVisibility);
     };
-  }, []);
+  }, [slow]);
 
   return (
     <div className="tech-bg" aria-hidden="true">

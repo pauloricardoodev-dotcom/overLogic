@@ -30,8 +30,8 @@ const HowWeWorkSection = () => {
         }
       },
       {
-        threshold: 0.3,
-        rootMargin: '0px 0px -100px 0px'
+        threshold: 0,
+        rootMargin: '0px 0px -10% 0px'
       }
     );
 

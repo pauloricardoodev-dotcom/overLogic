@@ -1,0 +1,189 @@
+@property --ripple {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 0%;
+}
+
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* O preto vem dos tiles, que somem em mosaico na saída */
+  background: transparent;
+}
+
+.loader.done {
+  pointer-events: none;
+}
+
+/* Mosaico: cobre a tela e desaparece em ordem aleatória */
+.loader-tiles {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+}
+
+.loader-tile {
+  background: #000;
+  outline: 1px solid #000; /* evita frestas entre os tiles */
+  opacity: 1;
+  transition: opacity 0.25s ease-out;
+}
+
+.loader.done .loader-tile {
+  opacity: 0;
+}
+
+/* Grade de pontos: base fraca + onda vermelha que se expande do centro */
+.loader-dots,
+.loader-dots::before {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-size: 28px 28px;
+  background-position: center;
+}
+
+.loader-dots::before {
+  content: '';
+  background-image: radial-gradient(rgba(245, 243, 242, 0.14) 1px, transparent 1.6px);
+}
+
+.loader-dots {
+  background-image: radial-gradient(rgba(230, 23, 44, 0.9) 1.2px, transparent 2px);
+  -webkit-mask-image: radial-gradient(
+    circle at 50% 50%,
+    transparent calc(var(--ripple) - 18%),
+    #000 var(--ripple),
+    transparent calc(var(--ripple) + 18%)
+  );
+  mask-image: radial-gradient(
+    circle at 50% 50%,
+    transparent calc(var(--ripple) - 18%),
+    #000 var(--ripple),
+    transparent calc(var(--ripple) + 18%)
+  );
+  animation: loader-ripple 2.4s ease-out infinite;
+}
+
+.loader-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  padding: 0 24px;
+  text-align: center;
+}
+
+.loader-dots,
+.loader-content {
+  transition: opacity 0.3s ease-out;
+}
+
+.loader.done .loader-dots,
+.loader.done .loader-content {
+  opacity: 0;
+}
+
+.loader-title {
+  min-height: 1.2em;
+  font-size: 44px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: #f5f3f2;
+  white-space: pre;
+}
+
+.loader-title .over {
+  color: #e6172c;
+}
+
+.loader-greet {
+  display: inline-block;
+  color: #d8d4d2;
+  animation: loader-pop 0.2s ease-out;
+}
+
+.loader-cursor {
+  color: #e6172c;
+  font-weight: 400;
+  animation: loader-blink 0.9s steps(1, end) infinite;
+}
+
+.loader-ghost {
+  visibility: hidden;
+}
+
+.loader-status {
+  font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, Consolas, monospace;
+  font-size: 14px;
+  color: #8f8a88;
+  min-height: 1.4em;
+}
+
+.loader-status .prompt {
+  color: #e6172c;
+}
+
+.loader-status.ready {
+  color: #f5f3f2;
+}
+
+@keyframes loader-ripple {
+  from {
+    --ripple: 0%;
+  }
+  to {
+    --ripple: 130%;
+  }
+}
+
+@keyframes loader-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes loader-pop {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.loader-status-text {
+  display: inline-block;
+  animation: loader-pop 0.5s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loader-dots,
+  .loader-cursor,
+  .loader-greet,
+  .loader-status-text {
+    animation: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .loader-title {
+    font-size: 32px;
+  }
+  .loader-status {
+    font-size: 12px;
+  }
+  .loader-dots,
+  .loader-dots::before {
+    background-size: 22px 22px;
+  }
+}

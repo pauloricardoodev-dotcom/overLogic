@@ -26,8 +26,8 @@ const ContactSection = () => {
         }
       },
       {
-        threshold: 0.25,
-        rootMargin: '0px 0px -100px 0px'
+        threshold: 0,
+        rootMargin: '0px 0px -10% 0px'
       }
     );
 
@@ -92,17 +92,17 @@ const ContactSection = () => {
     {
       name: 'LinkedIn',
       icon: 'linkedin',
-      link: 'https://linkedin.com'
+      link: 'https://www.linkedin.com/in/paulo-ricardo-rinaldi-da-silva'
     },
     {
       name: 'GitHub',
       icon: 'github',
-      link: 'https://github.com'
+      link: 'https://github.com/pauloricardoodev-dotcom'
     },
     {
       name: 'Instagram',
       icon: 'instagram',
-      link: 'https://instagram.com'
+      link: 'https://www.instagram.com/paulo_o_dev'
     }
   ];
 

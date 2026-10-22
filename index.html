@@ -2,12 +2,35 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Paulo Rinaldi — Desenvolvimento Web e Sistemas</title>
+    <!-- Crítico: pinta preto + cursor piscando antes do CSS/JS chegarem (o React substitui #root ao montar) -->
+    <style>
+      html,
+      body {
+        background: #000;
+        margin: 0;
+      }
+      .boot {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #e6172c;
+        font: 800 44px 'Inter', 'Helvetica Neue', Arial, sans-serif;
+        animation: boot-blink 0.9s steps(1, end) infinite;
+      }
+      @keyframes boot-blink {
+        50% {
+          opacity: 0;
+        }
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root"><div class="boot" aria-hidden="true">_</div></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

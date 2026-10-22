@@ -38,3 +38,27 @@ body {
   }
 }
 
+
+/* Conexão lenta (ver src/utils/connection.js): sem loops, blur e backdrop-filter.
+   Animações finitas terminam instantaneamente no estado final. */
+html[data-connection='slow'] *,
+html[data-connection='slow'] *::before,
+html[data-connection='slow'] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  backdrop-filter: none !important;
+}
+
+html[data-connection='slow'] .cube-wrap {
+  filter: none;
+}
+
+/* Loader: mantém só o cursor piscando e fecha o mosaico de uma vez */
+html[data-connection='slow'] .loader-cursor {
+  animation-duration: 0.9s !important;
+  animation-iteration-count: infinite !important;
+}
+
+html[data-connection='slow'] .loader-tile {
+  transition-delay: 0s !important;
+}

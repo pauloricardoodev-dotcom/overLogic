@@ -1,13 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
 import Cube from './Cube';
-import Avatar from './Avatar';
 import './Hero.css';
 
 const NAV_LINKS = [
   { label: 'Início', href: '#inicio' },
+  { label: 'Sobre mim', href: '#sobre' },
   { label: 'Serviços', href: '#servicos' },
   { label: 'Soluções', href: '#solucoes' },
-  { label: 'Sobre mim', href: '#sobre' },
   { label: 'Contato', href: '#contato' },
 ];
 
@@ -97,7 +96,6 @@ const Hero = () => {
         <Cube isLoaded={isLoaded} />
 
         <div className={`text-side ${isLoaded ? 'loaded' : ''}`}>
-          <Avatar />
           <div className="eyebrow">TECNOLOGIA &nbsp;•&nbsp; INOVAÇÃO &nbsp;•&nbsp; RESULTADOS</div>
           <h1>
             Transformo ideias em <span className="accent">soluções</span> inteligentes.

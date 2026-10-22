@@ -717,36 +717,3 @@ html:not(.dark) .play-circle {
 .holo.glitch.mini {
   animation-duration: 0.55s;
 }
-
-/* AVATAR (foto em public/paulo.jpg; sem foto mostra as iniciais) */
-.avatar {
-  position: relative;
-  width: 72px;
-  height: 72px;
-  margin-bottom: 22px;
-  border-radius: 50%;
-  border: 2px solid #e6172c;
-  box-shadow: 0 0 0 4px rgba(230, 23, 44, 0.15), 0 0 24px rgba(230, 23, 44, 0.45);
-  overflow: hidden;
-  background: #0b0b0b;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  /* A foto é um plano aberto: dá zoom no rosto (origem = posição da cabeça na imagem) */
-  transform: scale(7);
-  transform-origin: 44.6% 39.5%;
-}
-
-.avatar-initials {
-  font-family: 'Courier New', monospace;
-  font-weight: 700;
-  font-size: 22px;
-  letter-spacing: 1px;
-  color: #f5f3f2;
-}
