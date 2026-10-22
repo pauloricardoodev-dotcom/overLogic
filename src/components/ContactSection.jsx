@@ -282,8 +282,8 @@ const ContactSection = () => {
         {/* Footer */}
         <div className="contact-footer">
           <div className="footer-logo">
-            <span className="footer-over">over</span>
-            <span className="footer-logic">Logic</span>
+            <span className="footer-over">Paulo</span>{' '}
+            <span className="footer-logic">Rinaldi</span>
           </div>
           <div className="footer-text">
             © 2026 Paulo Rinaldi. Todos os direitos reservados.
