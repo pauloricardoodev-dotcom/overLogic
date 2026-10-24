@@ -50,21 +50,46 @@ const ContactSection = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    setSubmitStatus(null);
+
+    try {
+      // Web3Forms delivers the message to the email tied to the access key
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: import.meta.env.VITE_WEB3FORMS_KEY,
+          subject: `Novo contato pelo site: ${formData.name}`,
+          from_name: 'Site Paulo Rinaldi',
+          replyto: formData.email,
+          ...formData
+        })
+      });
+      const result = await response.json();
+
+      if (!result.success) {
+        throw new Error(result.message);
+      }
+
       setSubmitStatus('success');
       setFormData({ name: '', email: '', message: '' });
-      
-      // Reset status after 3 seconds
+    } catch (error) {
+      console.error('Erro ao enviar formulário:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+
+      // Reset status after 5 seconds
       setTimeout(() => {
         setSubmitStatus(null);
-      }, 3000);
-    }, 1500);
+      }, 5000);
+    }
   };
 
   const contactInfo = [
@@ -199,6 +224,12 @@ const ContactSection = () => {
               {submitStatus === 'success' && (
                 <div className="submit-success">
                   Mensagem enviada com sucesso!
+                </div>
+              )}
+
+              {submitStatus === 'error' && (
+                <div className="submit-error">
+                  Não foi possível enviar. Tente novamente ou mande um e-mail direto.
                 </div>
               )}
             </form>
