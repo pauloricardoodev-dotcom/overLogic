@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './ContactSection.css';
 
+// Public key by design: Web3Forms only delivers to the email registered with it
+const WEB3FORMS_KEY = '0130aca4-df37-4819-8318-c8afbc0831b1';
+
 const ContactSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isExiting, setIsExiting] = useState(false);
@@ -64,7 +67,7 @@ const ContactSection = () => {
           Accept: 'application/json'
         },
         body: JSON.stringify({
-          access_key: import.meta.env.VITE_WEB3FORMS_KEY,
+          access_key: WEB3FORMS_KEY,
           subject: `Novo contato pelo site: ${formData.name}`,
           from_name: 'Site Paulo Rinaldi',
           replyto: formData.email,
